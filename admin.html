@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin — Bread of Charity</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      background: #060302;
+      color: #F5EAE0;
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column
+    }
+
+    ::-webkit-scrollbar {
+      width: 3px
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(232, 84, 26, .4);
+      border-radius: 2px
+    }
+
+    /* LOGIN */
+    #login-screen {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(8, 4, 2, .9);
+      border: 1px solid rgba(232, 84, 26, .2);
+      padding: 40px;
+      position: relative
+    }
+
+    .login-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #C8302C, #E8541A, transparent)
+    }
+
+    /* ADMIN */
+    #admin-screen {
+      display: none;
+      flex: 1;
+      flex-direction: column;
+      padding: 24px;
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%
+    }
+
+    /* COMPONENTS */
+    .label {
+      font-family: 'Space Mono', monospace;
+      font-size: 8px;
+      color: rgba(245, 234, 224, .35);
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      margin-bottom: 8px;
+      display: block
+    }
+
+    .input {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(232, 84, 26, .2);
+      color: #F5EAE0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color .2s;
+      border-radius: 2px
+    }
+
+    .input:focus {
+      border-color: rgba(232, 84, 26, .6)
+    }
+
+    .btn {
+      padding: 13px 24px;
+      border: none;
+      background: linear-gradient(135deg, #C8302C, #E8541A);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: all .2s;
+      border-radius: 2px;
+      width: 100%
+    }
+
+    .btn:hover {
+      opacity: .9
+    }
+
+    .btn-sm {
+      padding: 6px 14px;
+      font-size: 11px;
+      width: auto;
+      border-radius: 2px
+    }
+
+    .btn-danger {
+      background: rgba(220, 38, 38, .7)
+    }
+
+    .btn-danger:hover {
+      background: rgba(220, 38, 38, .9)
+    }
+
+    .card {
+      background: rgba(255, 255, 255, .02);
+      border: 1px solid rgba(232, 84, 26, .12);
+      padding: 24px;
+      margin-bottom: 16px;
+      border-radius: 2px;
+      position: relative
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(232, 84, 26, .3), transparent)
+    }
+
+    .hline {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(232, 84, 26, .2), transparent);
+      margin: 24px 0
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Space Mono', monospace;
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      padding: 4px 10px;
+      border-radius: 2px
+    }
+
+    .tag-green {
+      background: rgba(74, 222, 128, .08);
+      border: 1px solid rgba(74, 222, 128, .2);
+      color: #4ade80
+    }
+
+    .tag-orange {
+      background: rgba(232, 84, 26, .08);
+      border: 1px solid rgba(232, 84, 26, .2);
+      color: #E8541A
+    }
+
+    /* HISTORY ITEM */
+    .don-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(232, 84, 26, .06)
+    }
+
+    .don-item:last-child {
+      border-bottom: none
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════════ LOGIN ══════════════════ -->
+  <div id="login-screen">
+    <div class="login-box">
+      <div style="text-align:center;margin-bottom:32px">
+        <img src="https://res.cloudinary.com/dq75xqnwu/image/upload/v1779893244/Logo_PNG_2_kwxmaj.png" alt="BOC"
+          style="height:50px;mix-blend-mode:screen;margin-bottom:16px" />
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#F5EAE0">Panel Admin
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;color:#E8541A;letter-spacing:.15em;margin-top:4px">
+          BREAD OF CHARITY</div>
+      </div>
+      <div style="margin-bottom:20px">
+        <label class="label">Mot de passe</label>
+        <input id="pwd" type="password" class="input" placeholder="••••••••"
+          onkeydown="if(event.key==='Enter')login()" />
+      </div>
+      <button class="btn" onclick="login()">Connexion →</button>
+      <div id="login-error"
+        style="display:none;margin-top:12px;text-align:center;font-family:'Space Mono',monospace;font-size:10px;color:#ef4444">
+        Mot de passe incorrect
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ ADMIN ══════════════════ -->
+  <div id="admin-screen">
+
+    <!-- Header -->
+    <div
+      style="display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="https://res.cloudinary.com/dq75xqnwu/image/upload/v1779893244/Logo_PNG_2_kwxmaj.png" alt="BOC"
+          style="height:36px;mix-blend-mode:screen" />
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:#F5EAE0">Panel Admin
+          </div>
+          <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.35);letter-spacing:.1em">
+            Gala 31 mai 2026</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <span class="tag tag-green" id="live-indicator">● Live</span>
+        <button class="btn btn-sm" onclick="logout()"
+          style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)">Déconnexion</button>
+        <a href="index.html" target="_blank" class="btn btn-sm"
+          style="text-decoration:none;display:inline-flex;background:rgba(232,84,26,.15);border:1px solid rgba(232,84,26,.3)">Voir
+          le site ↗</a>
+      </div>
+    </div>
+
+    <!-- Totaux -->
+    <div id="totals-card" class="card">
+      <div
+        style="display:grid;grid-template-columns:1fr 1px 1fr;gap:0;background:rgba(232,84,26,.08);margin:-24px -24px 0;border-radius:0">
+        <div style="padding:24px;text-align:center;background:#060302">
+          <div
+            style="font-family:'Space Mono',monospace;font-size:8px;color:#E8541A;letter-spacing:.15em;margin-bottom:8px;text-transform:uppercase">
+            Total collecté</div>
+          <div id="admin-total-usd"
+            style="font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;color:#F5EAE0;line-height:1">$0
+          </div>
+          <div id="admin-total-cdf"
+            style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(245,234,224,.35);margin-top:6px">FC 0
+          </div>
+        </div>
+        <div style="background:rgba(232,84,26,.2)"></div>
+        <div style="padding:24px;text-align:center;background:#060302">
+          <div
+            style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);letter-spacing:.15em;margin-bottom:8px;text-transform:uppercase">
+            Objectif</div>
+          <div
+            style="font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;color:rgba(245,234,224,.4);line-height:1">
+            $125 000</div>
+          <div id="admin-pct"
+            style="font-family:'Space Mono',monospace;font-size:10px;color:#E8541A;margin-top:6px;font-weight:700">0%
+          </div>
+        </div>
+      </div>
+      <!-- Progress bar -->
+      <div style="margin-top:20px">
+        <div style="height:4px;background:rgba(245,234,224,.06);border-radius:1px;overflow:hidden">
+          <div id="admin-bar"
+            style="height:100%;background:linear-gradient(90deg,#C8302C,#E8541A);width:0%;transition:width .8s ease">
+          </div>
+        </div>
+      </div>
+      <!-- Breakdown -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+        <div style="text-align:center">
+          <div id="admin-donors"
+            style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:#F5EAE0">0</div>
+          <div
+            style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.3);text-transform:uppercase;letter-spacing:.1em;margin-top:3px">
+            Donateurs</div>
+        </div>
+        <div style="text-align:center">
+          <div id="admin-manual-count"
+            style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:#E8541A">0</div>
+          <div
+            style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.3);text-transform:uppercase;letter-spacing:.1em;margin-top:3px">
+            Dons manuels</div>
+        </div>
+        <div style="text-align:center">
+          <div id="admin-remaining"
+            style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:rgba(245,234,224,.5)">
+            $125 000</div>
+          <div
+            style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.3);text-transform:uppercase;letter-spacing:.1em;margin-top:3px">
+            Restants</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hline"></div>
+
+    <!-- AJOUTER UN DON MANUEL -->
+    <div class="card">
+      <div
+        style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#F5EAE0;margin-bottom:4px">
+        Ajouter un don</div>
+      <div
+        style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.35);letter-spacing:.08em;margin-bottom:24px">
+        Espèces · Virement · Tout paiement reçu manuellement</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div>
+          <label class="label">Nom du donateur</label>
+          <input id="admin-donor" type="text" class="input" placeholder="Nom ou Anonyme" />
+        </div>
+        <div>
+          <label class="label">Montant en USD ($)</label>
+          <input id="admin-amount" type="number" min="1" class="input" placeholder="Ex: 500"
+            oninput="updateCDFPreview(this.value)" />
+        </div>
+      </div>
+
+      <!-- CDF Preview -->
+      <div id="admin-cdf-preview"
+        style="padding:10px 14px;background:rgba(232,84,26,.05);border-left:2px solid rgba(232,84,26,.2);margin-bottom:16px;font-family:'Space Mono',monospace;font-size:10px;color:rgba(245,234,224,.4)">
+        Entrez un montant pour voir l'équivalent en FC
+      </div>
+
+      <!-- Mode de paiement -->
+      <div style="margin-bottom:16px">
+        <label class="label">Type de paiement</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="pay-type active" onclick="selType('cash',this)"
+            style="padding:8px 16px;border-radius:2px;border:1px solid rgba(232,84,26,.5);background:rgba(232,84,26,.1);color:#E8541A;font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;transition:all .2s">💵
+            Espèces</button>
+          <button class="pay-type" onclick="selType('mobilemoney',this)"
+            style="padding:8px 16px;border-radius:2px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);color:rgba(245,234,224,.5);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;transition:all .2s">📱
+            Mobile Money</button>
+          <button class="pay-type" onclick="selType('virement',this)"
+            style="padding:8px 16px;border-radius:2px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);color:rgba(245,234,224,.5);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;transition:all .2s">🏦
+            Virement</button>
+          <button class="pay-type" onclick="selType('autre',this)"
+            style="padding:8px 16px;border-radius:2px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);color:rgba(245,234,224,.5);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;transition:all .2s">📝
+            Autre</button>
+        </div>
+      </div>
+
+      <button class="btn" onclick="addManualDon()">+ Enregistrer ce don</button>
+      <div id="add-success"
+        style="display:none;margin-top:12px;text-align:center;font-family:'Space Mono',monospace;font-size:10px;color:#4ade80">
+        ✓ Don enregistré et compteur mis à jour
+      </div>
+      <div id="add-error"
+        style="display:none;margin-top:12px;text-align:center;font-family:'Space Mono',monospace;font-size:10px;color:#ef4444">
+        ⚠ Veuillez entrer un montant valide
+      </div>
+    </div>
+
+    <div class="hline"></div>
+
+    <!-- HISTORIQUE -->
+    <div class="card">
+      <div
+        style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#F5EAE0">Historique
+          </div>
+          <div
+            style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.35);letter-spacing:.08em;margin-top:2px">
+            Dons enregistrés manuellement</div>
+        </div>
+        <button class="btn btn-sm btn-danger" onclick="confirmReset()"
+          style="background:rgba(220,38,38,.2);border:1px solid rgba(220,38,38,.3);color:#f87171">🗑
+          Réinitialiser</button>
+      </div>
+      <div id="history-list">
+        <div
+          style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(245,234,224,.25);text-align:center;padding:24px">
+          Aucun don manuel enregistré
+        </div>
+      </div>
+    </div>
+
+    <div style="height:40px"></div>
+  </div><!-- /admin-screen -->
+
+  <script>
+    const GOAL = 125000;
+    const RATE = 2850;   // 1 USD = 2850 FC
+    const BASE = 8640;
+    const BASE_DON = 87;
+    const PASSWORD = 'BOCKINETIX'; // ⚠️ Changez ce mot de passe !
+    let selectedType = 'cash';
+
+    // ══ FORMATTING ══
+    function fmtUSD(n) { return '$' + Math.round(n).toLocaleString('fr-FR') }
+    function fmtCDF(n) {
+      const m = n / 1000000;
+      if (m >= 1) return 'FC ' + m.toFixed(2).replace('.', ',') + ' M';
+      return 'FC ' + Math.round(n).toLocaleString('fr-FR');
+    }
+
+    // ══ STORAGE ══
+    function getDons() { try { return JSON.parse(localStorage.getItem('boc_dons') || '[]') } catch { return [] } }
+    function saveDons(d) {
+      localStorage.setItem('boc_dons', JSON.stringify(d));
+      const totalManual = d.reduce((s, x) => s + x.amount, 0);
+      localStorage.setItem('boc_manual_total', totalManual);
+      localStorage.setItem('boc_manual_donors', d.length);
+    }
+
+    // ══ AUTH ══
+    function login() {
+      const pwd = document.getElementById('pwd').value;
+      if (pwd === PASSWORD) {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('admin-screen').style.display = 'flex';
+        renderAll();
+      } else {
+        document.getElementById('login-error').style.display = 'block';
+        document.getElementById('pwd').value = '';
+        document.getElementById('pwd').focus();
+        setTimeout(() => document.getElementById('login-error').style.display = 'none', 2500);
+      }
+    }
+    function logout() {
+      document.getElementById('admin-screen').style.display = 'none';
+      document.getElementById('login-screen').style.display = 'flex';
+      document.getElementById('pwd').value = '';
+    }
+    document.getElementById('pwd').addEventListener('keydown', e => { if (e.key === 'Enter') login() });
+
+    // ══ RENDER TOTALS ══
+    function renderAll() {
+      const dons = getDons();
+      const manualTotal = dons.reduce((s, x) => s + x.amount, 0);
+      const total = BASE + manualTotal;
+      const donors = BASE_DON + dons.length;
+      const pct = Math.min((total / GOAL) * 100, 100);
+
+      document.getElementById('admin-total-usd').textContent = fmtUSD(total);
+      document.getElementById('admin-total-cdf').textContent = fmtCDF(total * RATE);
+      document.getElementById('admin-pct').textContent = pct.toFixed(2) + '%';
+      document.getElementById('admin-bar').style.width = pct + '%';
+      document.getElementById('admin-donors').textContent = donors.toLocaleString('fr-FR');
+      document.getElementById('admin-manual-count').textContent = dons.length;
+      document.getElementById('admin-remaining').textContent = fmtUSD(Math.max(0, GOAL - total));
+
+      renderHistory(dons);
+    }
+
+    // ══ HISTORY ══
+    function renderHistory(dons) {
+      const el = document.getElementById('history-list');
+      if (!dons.length) {
+        el.innerHTML = '<div style="font-family:\'Space Mono\',monospace;font-size:10px;color:rgba(245,234,224,.25);text-align:center;padding:24px">Aucun don manuel enregistré</div>';
+        return;
+      }
+      const sorted = [...dons].reverse();
+      el.innerHTML = sorted.map((d, i) => `
+    <div class="don-item">
+      <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#C8302C,#E8541A);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">
+        ${d.type === 'cash' ? '💵' : d.type === 'mobilemoney' ? '📱' : d.type === 'virement' ? '🏦' : '📝'}
+      </div>
+      <div style="flex:1">
+        <div style="font-size:14px;color:#F5EAE0;font-weight:500">${d.name}</div>
+        <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.3);letter-spacing:.06em;margin-top:2px">
+          ${new Date(d.timestamp).toLocaleString('fr-FR')} · ${d.type}
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#F07845">${fmtUSD(d.amount)}</div>
+        <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.28);margin-top:2px">${fmtCDF(d.amount * RATE)}</div>
+      </div>
+      <button onclick="removeDon(${dons.length - 1 - i})" style="margin-left:12px;padding:4px 8px;border:1px solid rgba(220,38,38,.3);background:rgba(220,38,38,.1);color:#f87171;font-size:10px;cursor:pointer;border-radius:2px;flex-shrink:0" title="Supprimer">✕</button>
+    </div>
+  `).join('');
+    }
+
+    // ══ ADD DON ══
+    function addManualDon() {
+      const name = (document.getElementById('admin-donor').value.trim() || 'Anonyme');
+      const amount = parseFloat(document.getElementById('admin-amount').value);
+      if (!amount || amount <= 0) {
+        document.getElementById('add-error').style.display = 'block';
+        setTimeout(() => document.getElementById('add-error').style.display = 'none', 2500);
+        return;
+      }
+      const dons = getDons();
+      dons.push({ name, amount, type: selectedType, timestamp: Date.now() });
+      saveDons(dons);
+      renderAll();
+
+      // Reset form
+      document.getElementById('admin-donor').value = '';
+      document.getElementById('admin-amount').value = '';
+      document.getElementById('admin-cdf-preview').textContent = 'Entrez un montant pour voir l\'équivalent en FC';
+      document.getElementById('add-success').style.display = 'block';
+      setTimeout(() => document.getElementById('add-success').style.display = 'none', 3000);
+    }
+
+    // ══ REMOVE DON ══
+    function removeDon(index) {
+      if (!confirm('Supprimer ce don ?')) return;
+      const dons = getDons();
+      dons.splice(index, 1);
+      saveDons(dons);
+      renderAll();
+    }
+
+    // ══ TYPE SELECTION ══
+    function selType(type, btn) {
+      selectedType = type;
+      document.querySelectorAll('.pay-type').forEach(b => {
+        b.style.borderColor = 'rgba(255,255,255,.08)';
+        b.style.background = 'rgba(255,255,255,.02)';
+        b.style.color = 'rgba(245,234,224,.5)';
+      });
+      btn.style.borderColor = 'rgba(232,84,26,.5)';
+      btn.style.background = 'rgba(232,84,26,.1)';
+      btn.style.color = '#E8541A';
+    }
+
+    // ══ CDF PREVIEW ══
+    function updateCDFPreview(val) {
+      const a = parseFloat(val);
+      if (!isNaN(a) && a > 0) {
+        document.getElementById('admin-cdf-preview').textContent =
+          `${fmtUSD(a)} = ${fmtCDF(a * RATE)} (taux: 1 USD = ${RATE} FC)`;
+      } else {
+        document.getElementById('admin-cdf-preview').textContent = "Entrez un montant pour voir l'équivalent en FC";
+      }
+    }
+
+    // ══ RESET ══
+    function confirmReset() {
+      if (confirm('⚠️ Supprimer TOUS les dons manuels ? Cette action est irréversible.')) {
+        localStorage.removeItem('boc_dons');
+        localStorage.removeItem('boc_manual_total');
+        localStorage.removeItem('boc_manual_donors');
+        renderAll();
+      }
+    }
+
+    // ══ ENTER KEY ══
+    document.getElementById('admin-amount').addEventListener('keydown', e => { if (e.key === 'Enter') addManualDon() });
+  </script>
+</body>
+
+</html>
