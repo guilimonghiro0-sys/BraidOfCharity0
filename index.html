@@ -522,15 +522,11 @@
      ══════════════════════════════════════════════════════ -->
   <script>
     const CONFIG = {
-      GOAL_USD: 120000,   // Objectif en USD
-      CDF_RATE: 2850,     // 1 USD = 2850 FC (mettre à jour si besoin)
-      BASE_TOTAL: 8640,     // Montant de départ en USD
-      BASE_DONORS: 87,
-
-      // ⚠️ LOGO : remplacer l'URL ci-dessous par le nouveau logo uploadé sur Cloudinary
+      GOAL_USD: 120000,
+      CDF_RATE: 2850,
+      BASE_TOTAL: 0,
+      BASE_DONORS: 0,
       LOGO_URL: 'https://res.cloudinary.com/dq75xqnwu/image/upload/v1779893244/Logo_PNG_2_kwxmaj.png',
-
-      // Numéros Mobile Money (à remplir demain)
       AIRTEL_NUM: '+243 XXX XXX XXX',
       MPESA_NUM: '+243 XXX XXX XXX',
     };
@@ -575,20 +571,14 @@
     <!-- TICKER -->
     <div class="ticker-wrap" style="margin-top:64px">
       <div class="ticker-inner" id="ticker">
-        <span class="ticker-item"><span class="ticker-dot"></span>Jean-Baptiste K. — 100 $</span>
-        <span class="ticker-item"><span class="ticker-dot"></span>Marie-Claire M. — 50 $</span>
-        <span class="ticker-item"><span class="ticker-dot"></span>Patrick L. — 200 $</span>
-        <span class="ticker-item"><span class="ticker-dot"></span>Anastasie N. — 500 $</span>
-        <span class="ticker-item"><span class="ticker-dot"></span>David O. — 100 $</span>
-        <span class="ticker-item"><span class="ticker-dot"></span>Cécile M. — 25 $</span>
-        <span class="ticker-item"><span class="ticker-dot"></span>Alain K. — 150 $</span>
-        <span class="ticker-item"><span class="ticker-dot"></span>Jean-Baptiste K. — 100 $</span>
-        <span class="ticker-item"><span class="ticker-dot"></span>Marie-Claire M. — 50 $</span>
-        <span class="ticker-item"><span class="ticker-dot"></span>Patrick L. — 200 $</span>
-        <span class="ticker-item"><span class="ticker-dot"></span>Anastasie N. — 500 $</span>
-        <span class="ticker-item"><span class="ticker-dot"></span>David O. — 100 $</span>
-        <span class="ticker-item"><span class="ticker-dot"></span>Cécile M. — 25 $</span>
-        <span class="ticker-item"><span class="ticker-dot"></span>Alain K. — 150 $</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Bread of Charity — Soirée Gala 31 mai 2026</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Hôtel Fleuve Congo · Kinshasa</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Objectif : $120 000</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Chaque don nourrit un enfant de la rue</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Bread of Charity — Soirée Gala 31 mai 2026</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Hôtel Fleuve Congo · Kinshasa</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Objectif : $120 000</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Chaque don nourrit un enfant de la rue</span>
       </div>
     </div>
 
@@ -1361,7 +1351,6 @@
     const RATE = CONFIG.CDF_RATE;
     const GALA = new Date("2026-05-31T16:00:00Z");
 
-    const FAKE = [{ name: "Jean-Baptiste K.", amount: 100 }, { name: "Marie-Claire M.", amount: 50 }, { name: "Patrick L.", amount: 200 }, { name: "Anastasie N.", amount: 500 }, { name: "David O.", amount: 100 }, { name: "Cécile M.", amount: 25 }, { name: "Alain K.", amount: 150 }, { name: "Béatrice M.", amount: 250 }];
     const IMPACTS = { 10: "8 repas chauds pour des enfants de la rue", 25: "4 jours de repas pour 5 enfants", 50: "environ 40 repas chauds pour des enfants", 100: "80 repas — 2 mois et demi pour 1 enfant", 200: "160 repas — 5 mois de déjeuners pour 1 enfant", 500: "400 repas — plus d'un an de repas pour 1 enfant", 1000: "800 repas chauds — contribution à la cantine" };
 
     // ══ COUNTDOWN ══
