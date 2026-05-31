@@ -272,7 +272,7 @@
             Objectif</div>
           <div
             style="font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;color:rgba(245,234,224,.4);line-height:1">
-            $125 000</div>
+            $120 000</div>
           <div id="admin-pct"
             style="font-family:'Space Mono',monospace;font-size:10px;color:#C09030;margin-top:6px;font-weight:700">0%
           </div>
@@ -305,7 +305,7 @@
         <div style="text-align:center">
           <div id="admin-remaining"
             style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:rgba(245,234,224,.5)">
-            $125 000</div>
+            $120 000</div>
           <div
             style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.3);text-transform:uppercase;letter-spacing:.1em;margin-top:3px">
             Restants</div>
@@ -400,13 +400,33 @@
     <div style="height:40px"></div>
   </div><!-- /admin-screen -->
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
   <script>
-    const GOAL = 125000;
-    const RATE = 2850;   // 1 USD = 2850 FC
+    const GOAL = 120000;
+    const RATE = 2850;
     const BASE = 8640;
     const BASE_DON = 87;
-    const PASSWORD = 'BOC2026'; // ⚠️ Changez ce mot de passe !
+    const PASSWORD = 'BOC2026';
     let selectedType = 'cash';
+
+    // ══════════════════════════════════════════════════════
+    // 🔥 FIREBASE — MÊME CONFIG QUE index.html
+    // Remplacez les valeurs ci-dessous avec votre config Firebase
+    // ══════════════════════════════════════════════════════
+    const FIREBASE_CONFIG = {
+      apiKey: "AIzaSyAVsmlT7bL4Mm1lESEiXu9HHMVDCxW-yP4",
+      authDomain: "bocharity.firebaseapp.com",
+      databaseURL: "https://bocharity-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "bocharity",
+      storageBucket: "bocharity.firebasestorage.app",
+      messagingSenderId: "189956878861",
+      appId: "1:189956878861:web:bc6e150288193c01a45b44"
+    };
+    firebase.initializeApp(FIREBASE_CONFIG);
+    const bocDB = firebase.database();
 
     // ══ FORMATTING ══
     function fmtUSD(n) { return '$' + Math.round(n).toLocaleString('fr-FR') }
@@ -416,22 +436,13 @@
       return 'FC ' + Math.round(n).toLocaleString('fr-FR');
     }
 
-    // ══ STORAGE ══
-    function getDons() { try { return JSON.parse(localStorage.getItem('boc_dons') || '[]') } catch { return [] } }
-    function saveDons(d) {
-      localStorage.setItem('boc_dons', JSON.stringify(d));
-      const totalManual = d.reduce((s, x) => s + x.amount, 0);
-      localStorage.setItem('boc_manual_total', totalManual);
-      localStorage.setItem('boc_manual_donors', d.length);
-    }
-
     // ══ AUTH ══
     function login() {
       const pwd = document.getElementById('pwd').value;
       if (pwd === PASSWORD) {
         document.getElementById('login-screen').style.display = 'none';
         document.getElementById('admin-screen').style.display = 'flex';
-        renderAll();
+        startListening();
       } else {
         document.getElementById('login-error').style.display = 'block';
         document.getElementById('pwd').value = '';
@@ -446,12 +457,35 @@
     }
     document.getElementById('pwd').addEventListener('keydown', e => { if (e.key === 'Enter') login() });
 
+    // ══ FIREBASE : écoute en temps réel ══
+    let currentDons = [];
+    function startListening() {
+      // Indicateur de connexion Firebase
+      bocDB.ref('.info/connected').on('value', snap => {
+        const el = document.getElementById('live-indicator');
+        if (snap.val() === true) {
+          el.textContent = '● Firebase Connecté';
+          el.className = 'tag tag-green';
+        } else {
+          el.textContent = '● Hors ligne';
+          el.className = 'tag tag-orange';
+        }
+      });
+
+      bocDB.ref('donations').on('value', snapshot => {
+        const data = snapshot.val();
+        currentDons = data
+          ? Object.entries(data).map(([key, val]) => ({ ...val, key })).sort((a, b) => b.timestamp - a.timestamp)
+          : [];
+        renderAll();
+      });
+    }
+
     // ══ RENDER TOTALS ══
     function renderAll() {
-      const dons = getDons();
-      const manualTotal = dons.reduce((s, x) => s + x.amount, 0);
+      const manualTotal = currentDons.reduce((s, x) => s + (x.amount || 0), 0);
       const total = BASE + manualTotal;
-      const donors = BASE_DON + dons.length;
+      const donors = BASE_DON + currentDons.length;
       const pct = Math.min((total / GOAL) * 100, 100);
 
       document.getElementById('admin-total-usd').textContent = fmtUSD(total);
@@ -459,21 +493,20 @@
       document.getElementById('admin-pct').textContent = pct.toFixed(2) + '%';
       document.getElementById('admin-bar').style.width = pct + '%';
       document.getElementById('admin-donors').textContent = donors.toLocaleString('fr-FR');
-      document.getElementById('admin-manual-count').textContent = dons.length;
+      document.getElementById('admin-manual-count').textContent = currentDons.length;
       document.getElementById('admin-remaining').textContent = fmtUSD(Math.max(0, GOAL - total));
 
-      renderHistory(dons);
+      renderHistory();
     }
 
     // ══ HISTORY ══
-    function renderHistory(dons) {
+    function renderHistory() {
       const el = document.getElementById('history-list');
-      if (!dons.length) {
+      if (!currentDons.length) {
         el.innerHTML = '<div style="font-family:\'Space Mono\',monospace;font-size:10px;color:rgba(245,234,224,.25);text-align:center;padding:24px">Aucun don manuel enregistré</div>';
         return;
       }
-      const sorted = [...dons].reverse();
-      el.innerHTML = sorted.map((d, i) => `
+      el.innerHTML = currentDons.map(d => `
     <div class="don-item">
       <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#9A7320,#C09030);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">
         ${d.type === 'cash' ? '💵' : d.type === 'mobilemoney' ? '📱' : d.type === 'virement' ? '🏦' : '📝'}
@@ -488,7 +521,7 @@
         <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#D4A843">${fmtUSD(d.amount)}</div>
         <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.28);margin-top:2px">${fmtCDF(d.amount * RATE)}</div>
       </div>
-      <button onclick="removeDon(${dons.length - 1 - i})" style="margin-left:12px;padding:4px 8px;border:1px solid rgba(220,38,38,.3);background:rgba(220,38,38,.1);color:#f87171;font-size:10px;cursor:pointer;border-radius:2px;flex-shrink:0" title="Supprimer">✕</button>
+      <button onclick="removeDon('${d.key}')" style="margin-left:12px;padding:4px 8px;border:1px solid rgba(220,38,38,.3);background:rgba(220,38,38,.1);color:#f87171;font-size:10px;cursor:pointer;border-radius:2px;flex-shrink:0" title="Supprimer">✕</button>
     </div>
   `).join('');
     }
@@ -502,26 +535,27 @@
         setTimeout(() => document.getElementById('add-error').style.display = 'none', 2500);
         return;
       }
-      const dons = getDons();
-      dons.push({ name, amount, type: selectedType, timestamp: Date.now() });
-      saveDons(dons);
-      renderAll();
 
-      // Reset form
-      document.getElementById('admin-donor').value = '';
-      document.getElementById('admin-amount').value = '';
-      document.getElementById('admin-cdf-preview').textContent = 'Entrez un montant pour voir l\'équivalent en FC';
-      document.getElementById('add-success').style.display = 'block';
-      setTimeout(() => document.getElementById('add-success').style.display = 'none', 3000);
+      bocDB.ref('donations').push({ name, amount, type: selectedType, timestamp: Date.now() })
+        .then(() => {
+          document.getElementById('admin-donor').value = '';
+          document.getElementById('admin-amount').value = '';
+          document.getElementById('admin-cdf-preview').textContent = "Entrez un montant pour voir l'équivalent en FC";
+          document.getElementById('add-success').style.display = 'block';
+          setTimeout(() => document.getElementById('add-success').style.display = 'none', 3000);
+        })
+        .catch(err => {
+          const errEl = document.getElementById('add-error');
+          errEl.textContent = '⚠ Erreur Firebase — vérifiez la config : ' + err.message;
+          errEl.style.display = 'block';
+          setTimeout(() => { errEl.style.display = 'none'; errEl.textContent = '⚠ Veuillez entrer un montant valide'; }, 5000);
+        });
     }
 
     // ══ REMOVE DON ══
-    function removeDon(index) {
+    function removeDon(key) {
       if (!confirm('Supprimer ce don ?')) return;
-      const dons = getDons();
-      dons.splice(index, 1);
-      saveDons(dons);
-      renderAll();
+      bocDB.ref('donations/' + key).remove();
     }
 
     // ══ TYPE SELECTION ══
@@ -551,10 +585,7 @@
     // ══ RESET ══
     function confirmReset() {
       if (confirm('⚠️ Supprimer TOUS les dons manuels ? Cette action est irréversible.')) {
-        localStorage.removeItem('boc_dons');
-        localStorage.removeItem('boc_manual_total');
-        localStorage.removeItem('boc_manual_donors');
-        renderAll();
+        bocDB.ref('donations').remove();
       }
     }
 

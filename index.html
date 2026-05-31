@@ -522,7 +522,7 @@
      ══════════════════════════════════════════════════════ -->
   <script>
     const CONFIG = {
-      GOAL_USD: 125000,   // Objectif en USD
+      GOAL_USD: 120000,   // Objectif en USD
       CDF_RATE: 2850,     // 1 USD = 2850 FC (mettre à jour si besoin)
       BASE_TOTAL: 8640,     // Montant de départ en USD
       BASE_DONORS: 87,
@@ -1275,6 +1275,10 @@
 
   </div><!-- /main-site -->
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
   <script>
     // ══ INIT LOGOS ══
     document.querySelectorAll('#pre-logo,#nav-logo,#hero-logo,#gala-logo,#footer-logo').forEach(el => el.src = CONFIG.LOGO_URL);
@@ -1325,17 +1329,32 @@
     }
     function pad(n) { return String(Math.max(0, n || 0)).padStart(2, '0') }
 
-    // ══ STATE ══
-    // Read manual donations from localStorage (added via admin.html)
-    function getManualTotal() {
-      try { return parseInt(localStorage.getItem('boc_manual_total') || '0') || 0 } catch { return 0 }
-    }
-    function getManualDonors() {
-      try { return parseInt(localStorage.getItem('boc_manual_donors') || '0') || 0 } catch { return 0 }
-    }
+    // ══════════════════════════════════════════════════════
+    // 🔥 FIREBASE — REMPLACEZ LES VALEURS CI-DESSOUS
+    // Instructions :
+    //   1. Allez sur https://console.firebase.google.com
+    //   2. Créez un projet gratuit (ex: "boc-gala-2026")
+    //   3. Dans le projet → Build → Realtime Database → Créer
+    //      → Choisir "Mode test" → OK
+    //   4. Retournez dans Paramètres du projet (⚙)
+    //      → Vos applications → </> (web) → Enregistrer l'app
+    //      → Copiez les valeurs et remplacez-les ici
+    // ══════════════════════════════════════════════════════
+    const FIREBASE_CONFIG = {
+      apiKey: "AIzaSyAVsmlT7bL4Mm1lESEiXu9HHMVDCxW-yP4",
+      authDomain: "bocharity.firebaseapp.com",
+      databaseURL: "https://bocharity-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "bocharity",
+      storageBucket: "bocharity.firebasestorage.app",
+      messagingSenderId: "189956878861",
+      appId: "1:189956878861:web:bc6e150288193c01a45b44"
+    };
+    firebase.initializeApp(FIREBASE_CONFIG);
+    const bocDB = firebase.database();
 
-    let total = CONFIG.BASE_TOTAL + getManualTotal();
-    let donors = CONFIG.BASE_DONORS + getManualDonors();
+    // ══ STATE ══
+    let total = CONFIG.BASE_TOTAL;
+    let donors = CONFIG.BASE_DONORS;
     let selAmount = 50;
 
     const GOAL = CONFIG.GOAL_USD;
@@ -1374,13 +1393,21 @@
     }
     updateCtr();
 
-    // ══ Listen for admin updates (same device) ══
-    window.addEventListener('storage', e => {
-      if (e.key === 'boc_manual_total' || e.key === 'boc_manual_donors') {
-        total = CONFIG.BASE_TOTAL + getManualTotal();
-        donors = CONFIG.BASE_DONORS + getManualDonors();
-        updateCtr();
+    // ══ FIREBASE : écoute les dons en temps réel (tous appareils) ══
+    let _prevDonCount = -1;
+    bocDB.ref('donations').on('value', snap => {
+      const data = snap.val();
+      const list = data ? Object.entries(data).map(([k, v]) => ({ ...v, key: k })) : [];
+      const manualTotal = list.reduce((s, d) => s + (d.amount || 0), 0);
+      // Toast + ticker uniquement pour les nouveaux dons (pas au chargement initial)
+      if (_prevDonCount >= 0 && list.length > _prevDonCount) {
+        const newest = list.sort((a, b) => b.timestamp - a.timestamp)[0];
+        if (newest) { showToast(newest.name, newest.amount); addToTicker(newest.name, newest.amount); }
       }
+      _prevDonCount = list.length;
+      total = CONFIG.BASE_TOTAL + manualTotal;
+      donors = CONFIG.BASE_DONORS + list.length;
+      updateCtr();
     });
 
     // ══ TOAST ══
@@ -1401,16 +1428,6 @@
       s.innerHTML = `<span class="ticker-dot"></span>${name} — ${fmtUSD(amount)}`;
       t.appendChild(s.cloneNode(true)); t.appendChild(s);
     }
-
-    function scheduleDonation() {
-      setTimeout(() => {
-        const d = FAKE[Math.floor(Math.random() * FAKE.length)];
-        total = Math.min(total + d.amount, GOAL); donors++;
-        updateCtr(); showToast(d.name, d.amount); addToTicker(d.name, d.amount);
-        scheduleDonation();
-      }, 9000 + Math.random() * 14000);
-    }
-    scheduleDonation();
 
     // ══ AMOUNTS ══
     function selAmt(a, btn) {
