@@ -1,782 +1,1671 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<meta name="description" content="Bread of Charity — Soirée Gala 31 mai 2026 · Hôtel Fleuve Congo · Kinshasa"/>
-<meta property="og:title" content="Bread of Charity — Gala 31 mai 2026"/>
-<meta property="og:image" content="https://res.cloudinary.com/dq75xqnwu/image/upload/v1779893244/Logo_PNG_2_kwxmaj.png"/>
-<title>Bread of Charity — Soirée Gala 31 mai 2026</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{background:#080F1E;color:#F5EAE0;font-family:'DM Sans',sans-serif;overflow-x:hidden}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:#080F1E}
-::-webkit-scrollbar-thumb{background:rgba(192,144,48,.5);border-radius:2px}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Bread of Charity — Soirée Gala 31 mai 2026 · Hôtel Fleuve Congo · Kinshasa" />
+  <meta property="og:title" content="Bread of Charity — Gala 31 mai 2026" />
+  <meta property="og:image"
+    content="https://res.cloudinary.com/dq75xqnwu/image/upload/v1779893244/Logo_PNG_2_kwxmaj.png" />
+  <title>Bread of Charity — Soirée Gala 31 mai 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
-/* PRELOADER */
-#preloader{position:fixed;inset:0;background:#040A14;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center}
-#preloader.exit{animation:preExit .9s ease forwards}
-@keyframes preExit{to{opacity:0;pointer-events:none}}
-.pre-glow{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(192,144,48,.18),transparent 70%);animation:glowPulse 2.5s ease-in-out infinite}
-@keyframes glowPulse{0%,100%{opacity:.6;transform:scale(.9)}50%{opacity:1;transform:scale(1.1)}}
-.pre-logo-img{width:240px;mix-blend-mode:screen;animation:logoIn .9s cubic-bezier(.34,1.56,.64,1) .1s both;position:relative;z-index:1}
-@keyframes logoIn{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
-.pre-divider{width:0;height:1.5px;background:linear-gradient(90deg,transparent,#C09030,transparent);animation:lineGrow 1s ease .9s forwards;margin-top:20px}
-@keyframes lineGrow{to{width:160px}}
-.pre-slogan{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:rgba(245,234,224,.55);animation:fadeup .8s ease 1.2s both;margin-top:18px;text-align:center}
-.pre-tag{font-family:'Space Mono',monospace;font-size:8px;color:rgba(192,144,48,.7);text-transform:uppercase;letter-spacing:.3em;animation:fadeup .8s ease 1.5s both;margin-top:10px}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* ANIMATIONS */
-@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
-@keyframes fadeup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@keyframes ping{75%,100%{transform:scale(2.8);opacity:0}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes particleUp{0%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:.8}90%{opacity:.4}100%{transform:translateY(-100vh) translateX(var(--dx));opacity:0}}
-@keyframes gradshift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-@keyframes barglow{0%,100%{filter:blur(10px);opacity:.5}50%{filter:blur(14px);opacity:.8}}
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased
+    }
 
-/* COMPONENTS */
-.hline{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(192,144,48,.22),transparent)}
-.btn-red{padding:14px 34px;border-radius:2px;border:none;background:linear-gradient(135deg,#9A7320,#C09030);color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;transition:all .2s}
-.btn-red:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(192,144,48,.35)}
-.btn-outline-red{padding:14px 34px;border-radius:2px;border:1px solid rgba(192,144,48,.4);background:transparent;color:#D4A843;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;letter-spacing:.06em;text-transform:uppercase;transition:all .2s}
-.btn-outline-red:hover{background:rgba(192,144,48,.08);transform:translateY(-2px)}
-.amount-btn{padding:11px 6px;border-radius:2px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);color:rgba(245,234,224,.38);font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;cursor:pointer;transition:all .2s;width:100%}
-.amount-btn.active,.amount-btn:hover{border-color:rgba(192,144,48,.6)!important;background:rgba(192,144,48,.1)!important;color:#D4A843!important}
-.pay-method{padding:14px 8px;border-radius:2px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);cursor:pointer;transition:all .2s;text-align:center;flex:1}
-.pay-method.active{border-color:rgba(192,144,48,.5);background:rgba(192,144,48,.07)}
-.pay-method:hover{border-color:rgba(192,144,48,.35)}
-.hovercard{transition:all .3s ease}
-.hovercard:hover{border-color:rgba(192,144,48,.3)!important;background:rgba(192,144,48,.05)!important;transform:translateY(-4px)}
-.ticker-wrap{overflow:hidden;white-space:nowrap;background:rgba(192,144,48,.06);border-bottom:1px solid rgba(192,144,48,.1);padding:9px 0;position:sticky;top:64px;z-index:99}
-.ticker-inner{display:inline-flex;animation:ticker 32s linear infinite}
-.ticker-item{display:inline-flex;align-items:center;gap:10px;padding:0 32px;font-family:'Space Mono',monospace;font-size:10px;color:rgba(245,234,224,.5);letter-spacing:.06em}
-.ticker-dot{width:5px;height:5px;border-radius:50%;background:#C09030;flex-shrink:0}
-.ornament{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:16px}
-.orn-line{height:1px;flex:1;max-width:60px;background:linear-gradient(90deg,transparent,rgba(192,144,48,.6))}
-.orn-line.rev{background:linear-gradient(90deg,rgba(192,144,48,.6),transparent)}
-.orn-diamond{width:6px;height:6px;background:#C09030;transform:rotate(45deg);flex-shrink:0}
-.invitation{background:linear-gradient(145deg,rgba(8,14,28,.97),rgba(8,14,28,.99));border:1px solid rgba(192,144,48,.22);position:relative;overflow:hidden}
-.invitation::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#9A7320,#C09030,#9A7320,transparent)}
-.corner{position:absolute;width:36px;height:36px;border-color:rgba(192,144,48,.28);border-style:solid}
-.co-tl{top:14px;left:14px;border-width:1px 0 0 1px}
-.co-tr{top:14px;right:14px;border-width:1px 1px 0 0}
-.co-bl{bottom:14px;left:14px;border-width:0 0 1px 1px}
-.co-br{bottom:14px;right:14px;border-width:0 1px 1px 0}
-.pay-detail{background:rgba(192,144,48,.03);border:1px solid rgba(192,144,48,.12);padding:18px;margin-top:14px;animation:fadeup .35s ease both}
-.pay-info-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(192,144,48,.07)}
-.pay-info-row:last-child{border-bottom:none}
-.copy-btn{padding:4px 10px;border:1px solid rgba(192,144,48,.3);background:transparent;color:#C09030;font-family:'Space Mono',monospace;font-size:8px;cursor:pointer;transition:all .2s}
-.copy-btn:hover{background:rgba(192,144,48,.1)}
-#particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.particle{position:absolute;bottom:-10px;border-radius:50%;background:#C09030;animation:particleUp var(--dur) ease-in var(--delay) infinite;opacity:0}
-input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none}
-</style>
+    body {
+      background: #080F1E;
+      color: #F5EAE0;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden
+    }
+
+    ::-webkit-scrollbar {
+      width: 3px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #080F1E
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(192, 144, 48, .5);
+      border-radius: 2px
+    }
+
+    /* PRELOADER */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: #040A14;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center
+    }
+
+    #preloader.exit {
+      animation: preExit .9s ease forwards
+    }
+
+    @keyframes preExit {
+      to {
+        opacity: 0;
+        pointer-events: none
+      }
+    }
+
+    .pre-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(192, 144, 48, .18), transparent 70%);
+      animation: glowPulse 2.5s ease-in-out infinite
+    }
+
+    @keyframes glowPulse {
+
+      0%,
+      100% {
+        opacity: .6;
+        transform: scale(.9)
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.1)
+      }
+    }
+
+    .pre-logo-img {
+      width: 240px;
+      mix-blend-mode: screen;
+      animation: logoIn .9s cubic-bezier(.34, 1.56, .64, 1) .1s both;
+      position: relative;
+      z-index: 1
+    }
+
+    @keyframes logoIn {
+      from {
+        opacity: 0;
+        transform: scale(.5)
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1)
+      }
+    }
+
+    .pre-divider {
+      width: 0;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, #C09030, transparent);
+      animation: lineGrow 1s ease .9s forwards;
+      margin-top: 20px
+    }
+
+    @keyframes lineGrow {
+      to {
+        width: 160px
+      }
+    }
+
+    .pre-slogan {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: rgba(245, 234, 224, .55);
+      animation: fadeup .8s ease 1.2s both;
+      margin-top: 18px;
+      text-align: center
+    }
+
+    .pre-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 8px;
+      color: rgba(192, 144, 48, .7);
+      text-transform: uppercase;
+      letter-spacing: .3em;
+      animation: fadeup .8s ease 1.5s both;
+      margin-top: 10px
+    }
+
+    /* ANIMATIONS */
+    @keyframes shimmer {
+      0% {
+        background-position: -200% center
+      }
+
+      100% {
+        background-position: 200% center
+      }
+    }
+
+    @keyframes fadeup {
+      from {
+        opacity: 0;
+        transform: translateY(18px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes ping {
+
+      75%,
+      100% {
+        transform: scale(2.8);
+        opacity: 0
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-7px)
+      }
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    @keyframes particleUp {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0
+      }
+
+      10% {
+        opacity: .8
+      }
+
+      90% {
+        opacity: .4
+      }
+
+      100% {
+        transform: translateY(-100vh) translateX(var(--dx));
+        opacity: 0
+      }
+    }
+
+    @keyframes gradshift {
+      0% {
+        background-position: 0% 50%
+      }
+
+      50% {
+        background-position: 100% 50%
+      }
+
+      100% {
+        background-position: 0% 50%
+      }
+    }
+
+    @keyframes barglow {
+
+      0%,
+      100% {
+        filter: blur(10px);
+        opacity: .5
+      }
+
+      50% {
+        filter: blur(14px);
+        opacity: .8
+      }
+    }
+
+    /* COMPONENTS */
+    .hline {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(192, 144, 48, .22), transparent)
+    }
+
+    .btn-red {
+      padding: 14px 34px;
+      border-radius: 2px;
+      border: none;
+      background: linear-gradient(135deg, #9A7320, #C09030);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: all .2s
+    }
+
+    .btn-red:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(192, 144, 48, .35)
+    }
+
+    .btn-outline-red {
+      padding: 14px 34px;
+      border-radius: 2px;
+      border: 1px solid rgba(192, 144, 48, .4);
+      background: transparent;
+      color: #D4A843;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: all .2s
+    }
+
+    .btn-outline-red:hover {
+      background: rgba(192, 144, 48, .08);
+      transform: translateY(-2px)
+    }
+
+    .amount-btn {
+      padding: 11px 6px;
+      border-radius: 2px;
+      border: 1px solid rgba(255, 255, 255, .07);
+      background: rgba(255, 255, 255, .02);
+      color: rgba(245, 234, 224, .38);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      width: 100%
+    }
+
+    .amount-btn.active,
+    .amount-btn:hover {
+      border-color: rgba(192, 144, 48, .6) !important;
+      background: rgba(192, 144, 48, .1) !important;
+      color: #D4A843 !important
+    }
+
+    .pay-method {
+      padding: 14px 8px;
+      border-radius: 2px;
+      border: 1px solid rgba(255, 255, 255, .07);
+      background: rgba(255, 255, 255, .02);
+      cursor: pointer;
+      transition: all .2s;
+      text-align: center;
+      flex: 1
+    }
+
+    .pay-method.active {
+      border-color: rgba(192, 144, 48, .5);
+      background: rgba(192, 144, 48, .07)
+    }
+
+    .pay-method:hover {
+      border-color: rgba(192, 144, 48, .35)
+    }
+
+    .hovercard {
+      transition: all .3s ease
+    }
+
+    .hovercard:hover {
+      border-color: rgba(192, 144, 48, .3) !important;
+      background: rgba(192, 144, 48, .05) !important;
+      transform: translateY(-4px)
+    }
+
+    .ticker-wrap {
+      overflow: hidden;
+      white-space: nowrap;
+      background: rgba(192, 144, 48, .06);
+      border-bottom: 1px solid rgba(192, 144, 48, .1);
+      padding: 9px 0;
+      position: sticky;
+      top: 64px;
+      z-index: 99
+    }
+
+    .ticker-inner {
+      display: inline-flex;
+      animation: ticker 32s linear infinite
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 32px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: rgba(245, 234, 224, .5);
+      letter-spacing: .06em
+    }
+
+    .ticker-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #C09030;
+      flex-shrink: 0
+    }
+
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 16px
+    }
+
+    .orn-line {
+      height: 1px;
+      flex: 1;
+      max-width: 60px;
+      background: linear-gradient(90deg, transparent, rgba(192, 144, 48, .6))
+    }
+
+    .orn-line.rev {
+      background: linear-gradient(90deg, rgba(192, 144, 48, .6), transparent)
+    }
+
+    .orn-diamond {
+      width: 6px;
+      height: 6px;
+      background: #C09030;
+      transform: rotate(45deg);
+      flex-shrink: 0
+    }
+
+    .invitation {
+      background: linear-gradient(145deg, rgba(8, 14, 28, .97), rgba(8, 14, 28, .99));
+      border: 1px solid rgba(192, 144, 48, .22);
+      position: relative;
+      overflow: hidden
+    }
+
+    .invitation::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #9A7320, #C09030, #9A7320, transparent)
+    }
+
+    .corner {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      border-color: rgba(192, 144, 48, .28);
+      border-style: solid
+    }
+
+    .co-tl {
+      top: 14px;
+      left: 14px;
+      border-width: 1px 0 0 1px
+    }
+
+    .co-tr {
+      top: 14px;
+      right: 14px;
+      border-width: 1px 1px 0 0
+    }
+
+    .co-bl {
+      bottom: 14px;
+      left: 14px;
+      border-width: 0 0 1px 1px
+    }
+
+    .co-br {
+      bottom: 14px;
+      right: 14px;
+      border-width: 0 1px 1px 0
+    }
+
+    .pay-detail {
+      background: rgba(192, 144, 48, .03);
+      border: 1px solid rgba(192, 144, 48, .12);
+      padding: 18px;
+      margin-top: 14px;
+      animation: fadeup .35s ease both
+    }
+
+    .pay-info-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(192, 144, 48, .07)
+    }
+
+    .pay-info-row:last-child {
+      border-bottom: none
+    }
+
+    .copy-btn {
+      padding: 4px 10px;
+      border: 1px solid rgba(192, 144, 48, .3);
+      background: transparent;
+      color: #C09030;
+      font-family: 'Space Mono', monospace;
+      font-size: 8px;
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .copy-btn:hover {
+      background: rgba(192, 144, 48, .1)
+    }
+
+    #particles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden
+    }
+
+    .particle {
+      position: absolute;
+      bottom: -10px;
+      border-radius: 50%;
+      background: #C09030;
+      animation: particleUp var(--dur) ease-in var(--delay) infinite;
+      opacity: 0
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ══════════════════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════════════
      CONFIGURATION — À MODIFIER ICI
      ══════════════════════════════════════════════════════ -->
-<script>
-const CONFIG = {
-  GOAL_USD:   125000,   // Objectif en USD
-  CDF_RATE:   2850,     // 1 USD = 2850 FC (mettre à jour si besoin)
-  BASE_TOTAL: 8640,     // Montant de départ en USD
-  BASE_DONORS: 87,
+  <script>
+    const CONFIG = {
+      GOAL_USD: 125000,   // Objectif en USD
+      CDF_RATE: 2850,     // 1 USD = 2850 FC (mettre à jour si besoin)
+      BASE_TOTAL: 8640,     // Montant de départ en USD
+      BASE_DONORS: 87,
 
-  // ⚠️ LOGO : remplacer l'URL ci-dessous par le nouveau logo uploadé sur Cloudinary
-  LOGO_URL: 'https://res.cloudinary.com/dq75xqnwu/image/upload/v1779893244/Logo_PNG_2_kwxmaj.png',
+      // ⚠️ LOGO : remplacer l'URL ci-dessous par le nouveau logo uploadé sur Cloudinary
+      LOGO_URL: 'https://res.cloudinary.com/dq75xqnwu/image/upload/v1779893244/Logo_PNG_2_kwxmaj.png',
 
-  // Numéros Mobile Money (à remplir demain)
-  ORANGE_NUM:  '+243 808 098 842',
-  MPESA_NUM:   '+243 830 570 111',
-  AIRTEL_NUM:  '+243 988 742 356',
-  EQUITY_CDF:  '266 100 213 719 474',
-  EQUITY_USD:  '266 100 213 720 444',
-  CONTACT_NUM: '+243 811 907 743',
-};
-</script>
+      // Numéros Mobile Money (à remplir demain)
+      ORANGE_NUM: '+243 808 098 842',
+      MPESA_NUM: '+243 830 570 111',
+      AIRTEL_NUM: '+243 988 742 356',
+      EQUITY_CDF: '266 100 213 719 474',
+      EQUITY_USD: '266 100 213 720 444',
+      FIRSTBANK_USD: '301 303 670 13-77',
+      CONTACT_NUM: '+243 811 907 743',
+    };
+  </script>
 
-<!-- PRELOADER -->
-<div id="preloader">
-  <div class="pre-glow"></div>
-  <img class="pre-logo-img" id="pre-logo" alt="Bread of Charity"/>
-  <div class="pre-divider"></div>
-  <div class="pre-slogan">"Leur sort est entre nos mains !"</div>
-  <div class="pre-tag">Parce qu'aucun enfant ne devrait avoir faim</div>
-</div>
-
-<!-- MAIN SITE -->
-<div id="main-site" style="opacity:0;transition:opacity .9s ease">
-
-<!-- TOASTS -->
-<div id="toasts" style="position:fixed;top:80px;right:20px;z-index:1000;display:flex;flex-direction:column;gap:10px;align-items:flex-end;pointer-events:none"></div>
-
-<!-- NAV -->
-<nav id="nav" style="position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;padding:0 clamp(16px,5vw,48px);justify-content:space-between;transition:all .4s ease">
-  <img id="nav-logo" alt="Bread of Charity" style="height:44px;mix-blend-mode:screen;cursor:pointer" onclick="go('hero')"/>
-  <div style="display:flex;align-items:center;gap:clamp(12px,3vw,28px)">
-    <button onclick="go('mission')" style="color:rgba(245,234,224,.5);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;background:none;border:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s" onmouseover="this.style.color='#D4A843'" onmouseout="this.style.color='rgba(245,234,224,.5)'">Mission</button>
-    <button onclick="go('gala')" style="color:rgba(245,234,224,.5);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;background:none;border:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s" onmouseover="this.style.color='#D4A843'" onmouseout="this.style.color='rgba(245,234,224,.5)'">Gala</button>
-    <button onclick="go('donate')" style="padding:8px 20px;border-radius:2px;border:1px solid rgba(192,144,48,.5);background:rgba(192,144,48,.08);color:#C09030;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.08em;text-transform:uppercase" onmouseover="this.style.background='rgba(192,144,48,.2)'" onmouseout="this.style.background='rgba(192,144,48,.08)'">Faire un don</button>
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="pre-glow"></div>
+    <img class="pre-logo-img" id="pre-logo" alt="Bread of Charity" />
+    <div class="pre-divider"></div>
+    <div class="pre-slogan">"Leur sort est entre nos mains !"</div>
+    <div class="pre-tag">Parce qu'aucun enfant ne devrait avoir faim</div>
   </div>
-</nav>
 
-<!-- TICKER -->
-<div class="ticker-wrap" style="margin-top:64px">
-  <div class="ticker-inner" id="ticker">
-    <span class="ticker-item"><span class="ticker-dot"></span>Bienvenue au Gala de Charité Bread of Charity · 31 mai 2026</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Hôtel Fleuve Congo · Kinshasa · RDC</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Leur sort est entre nos mains !</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Aidez-nous à construire la cantine populaire</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Objectif : 125 000 $ pour nourrir les enfants de la rue</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Bienvenue au Gala de Charité Bread of Charity · 31 mai 2026</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Hôtel Fleuve Congo · Kinshasa · RDC</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Leur sort est entre nos mains !</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Aidez-nous à construire la cantine populaire</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Objectif : 125 000 $ pour nourrir les enfants de la rue</span>
-  </div>
-</div>
+  <!-- MAIN SITE -->
+  <div id="main-site" style="opacity:0;transition:opacity .9s ease">
 
-<!-- HERO -->
-<section id="hero" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:60px clamp(16px,6vw,60px)">
-  <div id="particles"></div>
-  <video id="hero-video" autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 2.5s ease;z-index:0">
-    <source src="https://res.cloudinary.com/dq75xqnwu/video/upload/1000026592_n498vk.mp4" type="video/mp4"/>
-  </video>
-  <div id="fallback" style="position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 120% 90% at 50% 30%,rgba(192,144,48,.18) 0%,rgba(8,14,28,.98) 60%);transition:opacity 2.5s ease"></div>
-  <div style="position:absolute;inset:0;z-index:2;background:linear-gradient(to bottom,rgba(5,9,16,.78) 0%,rgba(5,9,16,.38) 35%,rgba(5,9,16,.38) 65%,rgba(5,9,16,.94) 100%)"></div>
-
-  <div style="position:relative;z-index:3;max-width:860px;width:100%;text-align:center;animation:fadeup 1s ease both">
-    <img id="hero-logo" alt="Bread of Charity" style="height:clamp(50px,8vw,75px);mix-blend-mode:screen;margin-bottom:32px;animation:float 4s ease-in-out infinite"/>
-    <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:16px">
-      <div style="width:40px;height:1px;background:linear-gradient(90deg,transparent,rgba(192,144,48,.6))"></div>
-      <span style="font-family:'Space Mono',monospace;font-size:9px;color:#C09030;text-transform:uppercase;letter-spacing:.28em">Soirée de Gala · 31 mai 2026</span>
-      <div style="width:40px;height:1px;background:linear-gradient(90deg,rgba(192,144,48,.6),transparent)"></div>
+    <!-- TOASTS -->
+    <div id="toasts"
+      style="position:fixed;top:80px;right:20px;z-index:1000;display:flex;flex-direction:column;gap:10px;align-items:flex-end;pointer-events:none">
     </div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:36px">
-      <span style="position:relative;width:7px;height:7px;flex-shrink:0"><span style="position:absolute;inset:0;border-radius:50%;background:#4ade80;animation:ping 2s ease-out infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#4ade80;display:block;position:relative"></span></span>
-      <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.5);text-transform:uppercase;letter-spacing:.15em">Hôtel Fleuve Congo, Kinshasa</span>
-    </div>
-    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,9vw,94px);font-weight:300;line-height:1.02;color:#F5EAE0;letter-spacing:-.01em;margin-bottom:10px;text-shadow:0 4px 40px rgba(0,0,0,.8)">Parce qu'aucun enfant</h1>
-    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,9vw,94px);font-weight:700;font-style:italic;line-height:1.02;margin-bottom:32px;text-shadow:0 4px 40px rgba(0,0,0,.7);background:linear-gradient(90deg,#9A7320,#C09030,#D4A843,#C09030,#9A7320);background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradshift 5s ease infinite">ne devrait avoir faim.</h1>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,21px);font-weight:300;font-style:italic;color:rgba(245,234,224,.65);max-width:560px;margin:0 auto 52px;line-height:1.75;text-shadow:0 2px 20px rgba(0,0,0,.8)">Une initiative humanitaire pour les enfants de la rue de Kinshasa</p>
-    <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:20px;margin-top:-24px"><div style="width:30px;height:1px;background:linear-gradient(90deg,transparent,rgba(192,144,48,.6))"></div><span style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2vw,18px);font-style:italic;color:rgba(240,228,200,.7);letter-spacing:.04em">Leur sort est entre nos mains !</span><div style="width:30px;height:1px;background:linear-gradient(90deg,rgba(192,144,48,.6),transparent)"></div></div>
-    <div style="display:inline-flex;align-items:center;gap:6px;padding:22px clamp(16px,4vw,40px);background:rgba(5,9,16,.75);border:1px solid rgba(192,144,48,.2);position:relative;margin-bottom:48px;backdrop-filter:blur(20px);flex-wrap:wrap;justify-content:center;row-gap:12px">
-      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#C09030,transparent)"></div>
-      <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.35);text-transform:uppercase;letter-spacing:.18em;align-self:center;margin-right:12px">Le gala dans</div>
-      <div id="cd-days"></div>
-      <span style="font-family:'Cormorant Garamond',serif;font-size:28px;color:rgba(192,144,48,.35);padding-bottom:12px">:</span>
-      <div id="cd-hours"></div>
-      <span style="font-family:'Cormorant Garamond',serif;font-size:28px;color:rgba(192,144,48,.35);padding-bottom:12px">:</span>
-      <div id="cd-min"></div>
-      <span style="font-family:'Cormorant Garamond',serif;font-size:28px;color:rgba(192,144,48,.35);padding-bottom:12px">:</span>
-      <div id="cd-sec"></div>
-    </div>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <button class="btn-red" onclick="go('donate')">Faire un don →</button>
-      <button class="btn-outline-red" onclick="go('gala')">Programme du soir</button>
-    </div>
-  </div>
-  <div style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.3;z-index:3">
-    <div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase">Défiler</div>
-    <div style="width:1px;height:40px;background:linear-gradient(to bottom,#C09030,transparent)"></div>
-  </div>
-</section>
 
-<div class="hline"></div>
-
-<!-- KEY STATS -->
-<section style="padding:70px clamp(16px,6vw,60px);background:rgba(192,144,48,.03)">
-  <div style="max-width:900px;margin:0 auto">
-    <div class="ornament"><div class="orn-line"></div><div class="orn-diamond"></div><div class="orn-line rev"></div></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:rgba(192,144,48,.1)">
-      <div style="background:#080F1E;padding:44px 28px;text-align:center">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,66px);font-weight:700;line-height:1;margin-bottom:10px;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent">50 000</div>
-        <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);text-transform:uppercase;letter-spacing:.15em;line-height:1.7">enfants dans les rues<br>de Kinshasa</div>
+    <!-- NAV -->
+    <nav id="nav"
+      style="position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;padding:0 clamp(16px,5vw,48px);justify-content:space-between;transition:all .4s ease">
+      <img id="nav-logo" alt="Bread of Charity" style="height:44px;mix-blend-mode:screen;cursor:pointer"
+        onclick="go('hero')" />
+      <div style="display:flex;align-items:center;gap:clamp(12px,3vw,28px)">
+        <button onclick="go('mission')"
+          style="color:rgba(245,234,224,.5);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;background:none;border:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s"
+          onmouseover="this.style.color='#D4A843'" onmouseout="this.style.color='rgba(245,234,224,.5)'">Mission</button>
+        <button onclick="go('gala')"
+          style="color:rgba(245,234,224,.5);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;background:none;border:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s"
+          onmouseover="this.style.color='#D4A843'" onmouseout="this.style.color='rgba(245,234,224,.5)'">Gala</button>
+        <button onclick="go('donate')"
+          style="padding:8px 20px;border-radius:2px;border:1px solid rgba(192,144,48,.5);background:rgba(192,144,48,.08);color:#C09030;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.08em;text-transform:uppercase"
+          onmouseover="this.style.background='rgba(192,144,48,.2)'"
+          onmouseout="this.style.background='rgba(192,144,48,.08)'">Faire un don</button>
       </div>
-      <div style="background:#080F1E;padding:44px 28px;text-align:center">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,66px);font-weight:700;line-height:1;margin-bottom:10px;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent">60%</div>
-        <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);text-transform:uppercase;letter-spacing:.15em;line-height:1.7">trouvent difficilement<br>quoi manger chaque jour</div>
-      </div>
-      <div style="background:#080F1E;padding:44px 28px;text-align:center">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,66px);font-weight:700;line-height:1;margin-bottom:10px;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent">1</div>
-        <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);text-transform:uppercase;letter-spacing:.15em;line-height:1.7">cantine populaire<br>pour changer ces vies</div>
+    </nav>
+
+    <!-- TICKER -->
+    <div class="ticker-wrap" style="margin-top:64px">
+      <div class="ticker-inner" id="ticker">
+        <span class="ticker-item"><span class="ticker-dot"></span>Bienvenue au Gala de Charité Bread of Charity · 31 mai
+          2026</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Hôtel Fleuve Congo · Kinshasa · RDC</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Leur sort est entre nos mains !</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Aidez-nous à construire la cantine populaire</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Objectif : 125 000 $ pour nourrir les enfants de la
+          rue</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Bienvenue au Gala de Charité Bread of Charity · 31 mai
+          2026</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Hôtel Fleuve Congo · Kinshasa · RDC</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Leur sort est entre nos mains !</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Aidez-nous à construire la cantine populaire</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Objectif : 125 000 $ pour nourrir les enfants de la
+          rue</span>
       </div>
     </div>
-    <div class="ornament" style="margin-bottom:0"><div class="orn-line"></div><div class="orn-diamond"></div><div class="orn-line rev"></div></div>
-  </div>
-</section>
 
-<div class="hline"></div>
-
-<!-- ══ DOUBLE COUNTER USD + FC ══ -->
-<section style="padding:100px clamp(16px,6vw,60px)">
-  <div style="max-width:760px;margin:0 auto">
-    <div style="text-align:center;margin-bottom:48px">
-      <div class="ornament"><div class="orn-line"></div><span style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.22em">Levée de fonds · En direct</span><div class="orn-line rev"></div></div>
-      <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:16px">
-        <span style="position:relative;width:7px;height:7px"><span style="position:absolute;inset:0;border-radius:50%;background:#4ade80;animation:ping 2s ease-out infinite"></span><span style="width:7px;height:7px;border-radius:50%;background:#4ade80;display:block;position:relative"></span></span>
-        <span style="font-family:'Space Mono',monospace;font-size:9px;color:#4ade80;letter-spacing:.1em">Live · Temps réel</span>
+    <!-- HERO -->
+    <section id="hero"
+      style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:60px clamp(16px,6vw,60px)">
+      <div id="particles"></div>
+      <video id="hero-video" autoplay muted loop playsinline
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 2.5s ease;z-index:0">
+        <source src="https://res.cloudinary.com/dq75xqnwu/video/upload/1000026592_n498vk.mp4" type="video/mp4" />
+      </video>
+      <div id="fallback"
+        style="position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 120% 90% at 50% 30%,rgba(192,144,48,.18) 0%,rgba(8,14,28,.98) 60%);transition:opacity 2.5s ease">
+      </div>
+      <div
+        style="position:absolute;inset:0;z-index:2;background:linear-gradient(to bottom,rgba(5,9,16,.78) 0%,rgba(5,9,16,.38) 35%,rgba(5,9,16,.38) 65%,rgba(5,9,16,.94) 100%)">
       </div>
 
-      <!-- USD + CDF side by side -->
-      <div style="display:grid;grid-template-columns:1fr 1px 1fr;gap:0;background:rgba(192,144,48,.08);margin-bottom:40px">
-        <!-- USD -->
-        <div style="background:#080F1E;padding:clamp(24px,4vw,40px) clamp(16px,3vw,32px);text-align:center">
-          <div style="font-family:'Space Mono',monospace;font-size:9px;color:#C09030;text-transform:uppercase;letter-spacing:.18em;margin-bottom:12px">Dollar américain</div>
-          <div id="total-usd" style="font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,72px);font-weight:700;color:#F5EAE0;line-height:1;letter-spacing:-.02em">$8 640</div>
-          <div style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(245,234,224,.28);margin-top:8px">sur <span id="goal-usd" style="color:rgba(245,234,224,.5)">$125 000</span></div>
+      <div
+        style="position:relative;z-index:3;max-width:860px;width:100%;text-align:center;animation:fadeup 1s ease both">
+        <img id="hero-logo" alt="Bread of Charity"
+          style="height:clamp(50px,8vw,75px);mix-blend-mode:screen;margin-bottom:32px;animation:float 4s ease-in-out infinite" />
+        <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:16px">
+          <div style="width:40px;height:1px;background:linear-gradient(90deg,transparent,rgba(192,144,48,.6))"></div>
+          <span
+            style="font-family:'Space Mono',monospace;font-size:9px;color:#C09030;text-transform:uppercase;letter-spacing:.28em">Soirée
+            de Gala · 31 mai 2026</span>
+          <div style="width:40px;height:1px;background:linear-gradient(90deg,rgba(192,144,48,.6),transparent)"></div>
         </div>
-        <!-- Divider -->
-        <div style="background:rgba(192,144,48,.2)"></div>
-        <!-- CDF -->
-        <div style="background:#080F1E;padding:clamp(24px,4vw,40px) clamp(16px,3vw,32px);text-align:center">
-          <div style="font-family:'Space Mono',monospace;font-size:9px;color:#C09030;text-transform:uppercase;letter-spacing:.18em;margin-bottom:12px">Franc Congolais</div>
-          <div id="total-cdf" style="font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,72px);font-weight:700;color:#F5EAE0;line-height:1;letter-spacing:-.02em">FC 24M</div>
-          <div style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(245,234,224,.28);margin-top:8px">sur <span id="goal-cdf" style="color:rgba(245,234,224,.5)">FC 356M</span></div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:36px">
+          <span style="position:relative;width:7px;height:7px;flex-shrink:0"><span
+              style="position:absolute;inset:0;border-radius:50%;background:#4ade80;animation:ping 2s ease-out infinite"></span><span
+              style="width:7px;height:7px;border-radius:50%;background:#4ade80;display:block;position:relative"></span></span>
+          <span
+            style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.5);text-transform:uppercase;letter-spacing:.15em">Hôtel
+            Fleuve Congo, Kinshasa</span>
+        </div>
+        <h1
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,9vw,94px);font-weight:300;line-height:1.02;color:#F5EAE0;letter-spacing:-.01em;margin-bottom:10px;text-shadow:0 4px 40px rgba(0,0,0,.8)">
+          Parce qu'aucun enfant</h1>
+        <h1
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,9vw,94px);font-weight:700;font-style:italic;line-height:1.02;margin-bottom:32px;text-shadow:0 4px 40px rgba(0,0,0,.7);background:linear-gradient(90deg,#9A7320,#C09030,#D4A843,#C09030,#9A7320);background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradshift 5s ease infinite">
+          ne devrait avoir faim.</h1>
+        <p
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,21px);font-weight:300;font-style:italic;color:rgba(245,234,224,.65);max-width:560px;margin:0 auto 52px;line-height:1.75;text-shadow:0 2px 20px rgba(0,0,0,.8)">
+          Une initiative humanitaire pour les enfants de la rue de Kinshasa</p>
+        <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:20px;margin-top:-24px">
+          <div style="width:30px;height:1px;background:linear-gradient(90deg,transparent,rgba(192,144,48,.6))"></div>
+          <span
+            style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2vw,18px);font-style:italic;color:rgba(240,228,200,.7);letter-spacing:.04em">Leur
+            sort est entre nos mains !</span>
+          <div style="width:30px;height:1px;background:linear-gradient(90deg,rgba(192,144,48,.6),transparent)"></div>
+        </div>
+        <div
+          style="display:inline-flex;align-items:center;gap:6px;padding:22px clamp(16px,4vw,40px);background:rgba(5,9,16,.75);border:1px solid rgba(192,144,48,.2);position:relative;margin-bottom:48px;backdrop-filter:blur(20px);flex-wrap:wrap;justify-content:center;row-gap:12px">
+          <div
+            style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#C09030,transparent)">
+          </div>
+          <div
+            style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.35);text-transform:uppercase;letter-spacing:.18em;align-self:center;margin-right:12px">
+            Le gala dans</div>
+          <div id="cd-days"></div>
+          <span
+            style="font-family:'Cormorant Garamond',serif;font-size:28px;color:rgba(192,144,48,.35);padding-bottom:12px">:</span>
+          <div id="cd-hours"></div>
+          <span
+            style="font-family:'Cormorant Garamond',serif;font-size:28px;color:rgba(192,144,48,.35);padding-bottom:12px">:</span>
+          <div id="cd-min"></div>
+          <span
+            style="font-family:'Cormorant Garamond',serif;font-size:28px;color:rgba(192,144,48,.35);padding-bottom:12px">:</span>
+          <div id="cd-sec"></div>
+        </div>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <button class="btn-red" onclick="go('donate')">Faire un don →</button>
+          <button class="btn-outline-red" onclick="go('gala')">Programme du soir</button>
         </div>
       </div>
+      <div
+        style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.3;z-index:3">
+        <div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase">
+          Défiler</div>
+        <div style="width:1px;height:40px;background:linear-gradient(to bottom,#C09030,transparent)"></div>
+      </div>
+    </section>
 
-      <!-- USD Progress Bar -->
-      <div style="margin-bottom:20px">
-        <div style="display:flex;justify-content:space-between;margin-bottom:8px">
-          <span style="font-family:'Space Mono',monospace;font-size:9px;color:#C09030;letter-spacing:.06em">USD</span>
-          <span id="pct-usd" style="font-family:'Space Mono',monospace;font-size:9px;color:#C09030;font-weight:700">6.91%</span>
+    <div class="hline"></div>
+
+    <!-- KEY STATS -->
+    <section style="padding:70px clamp(16px,6vw,60px);background:rgba(192,144,48,.03)">
+      <div style="max-width:900px;margin:0 auto">
+        <div class="ornament">
+          <div class="orn-line"></div>
+          <div class="orn-diamond"></div>
+          <div class="orn-line rev"></div>
         </div>
-        <div style="height:5px;background:rgba(245,234,224,.06);position:relative;border-radius:1px">
-          <div id="bar-glow-usd" style="position:absolute;left:0;top:50%;transform:translateY(-50%);height:12px;background:linear-gradient(90deg,#9A7320,#C09030);filter:blur(6px);opacity:.5;transition:width 1.1s cubic-bezier(.34,1.15,.64,1);animation:barglow 2.8s ease-in-out infinite;width:6.91%"></div>
-          <div id="bar-usd" style="height:100%;background:linear-gradient(90deg,#9A7320,#C09030);transition:width 1.1s cubic-bezier(.34,1.15,.64,1);position:relative;overflow:hidden;width:6.91%">
-            <div style="position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);background-size:200% 100%;animation:shimmer 2s linear infinite"></div>
+        <div
+          style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:rgba(192,144,48,.1)">
+          <div style="background:#080F1E;padding:44px 28px;text-align:center">
+            <div
+              style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,66px);font-weight:700;line-height:1;margin-bottom:10px;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent">
+              50 000</div>
+            <div
+              style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);text-transform:uppercase;letter-spacing:.15em;line-height:1.7">
+              enfants dans les rues<br>de Kinshasa</div>
+          </div>
+          <div style="background:#080F1E;padding:44px 28px;text-align:center">
+            <div
+              style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,66px);font-weight:700;line-height:1;margin-bottom:10px;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent">
+              60%</div>
+            <div
+              style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);text-transform:uppercase;letter-spacing:.15em;line-height:1.7">
+              trouvent difficilement<br>quoi manger chaque jour</div>
+          </div>
+          <div style="background:#080F1E;padding:44px 28px;text-align:center">
+            <div
+              style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,66px);font-weight:700;line-height:1;margin-bottom:10px;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent">
+              1</div>
+            <div
+              style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);text-transform:uppercase;letter-spacing:.15em;line-height:1.7">
+              cantine populaire<br>pour changer ces vies</div>
+          </div>
+        </div>
+        <div class="ornament" style="margin-bottom:0">
+          <div class="orn-line"></div>
+          <div class="orn-diamond"></div>
+          <div class="orn-line rev"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="hline"></div>
+
+    <!-- ══ DOUBLE COUNTER USD + FC ══ -->
+    <section style="padding:100px clamp(16px,6vw,60px)">
+      <div style="max-width:760px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:48px">
+          <div class="ornament">
+            <div class="orn-line"></div><span
+              style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.22em">Levée
+              de fonds · En direct</span>
+            <div class="orn-line rev"></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:16px">
+            <span style="position:relative;width:7px;height:7px"><span
+                style="position:absolute;inset:0;border-radius:50%;background:#4ade80;animation:ping 2s ease-out infinite"></span><span
+                style="width:7px;height:7px;border-radius:50%;background:#4ade80;display:block;position:relative"></span></span>
+            <span style="font-family:'Space Mono',monospace;font-size:9px;color:#4ade80;letter-spacing:.1em">Live ·
+              Temps réel</span>
+          </div>
+
+          <!-- USD + CDF side by side -->
+          <div
+            style="display:grid;grid-template-columns:1fr 1px 1fr;gap:0;background:rgba(192,144,48,.08);margin-bottom:40px">
+            <!-- USD -->
+            <div style="background:#080F1E;padding:clamp(24px,4vw,40px) clamp(16px,3vw,32px);text-align:center">
+              <div
+                style="font-family:'Space Mono',monospace;font-size:9px;color:#C09030;text-transform:uppercase;letter-spacing:.18em;margin-bottom:12px">
+                Dollar américain</div>
+              <div id="total-usd"
+                style="font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,72px);font-weight:700;color:#F5EAE0;line-height:1;letter-spacing:-.02em">
+                $8 640</div>
+              <div style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(245,234,224,.28);margin-top:8px">
+                sur <span id="goal-usd" style="color:rgba(245,234,224,.5)">$125 000</span></div>
+            </div>
+            <!-- Divider -->
+            <div style="background:rgba(192,144,48,.2)"></div>
+            <!-- CDF -->
+            <div style="background:#080F1E;padding:clamp(24px,4vw,40px) clamp(16px,3vw,32px);text-align:center">
+              <div
+                style="font-family:'Space Mono',monospace;font-size:9px;color:#C09030;text-transform:uppercase;letter-spacing:.18em;margin-bottom:12px">
+                Franc Congolais</div>
+              <div id="total-cdf"
+                style="font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,72px);font-weight:700;color:#F5EAE0;line-height:1;letter-spacing:-.02em">
+                FC 24M</div>
+              <div style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(245,234,224,.28);margin-top:8px">
+                sur <span id="goal-cdf" style="color:rgba(245,234,224,.5)">FC 356M</span></div>
+            </div>
+          </div>
+
+          <!-- USD Progress Bar -->
+          <div style="margin-bottom:20px">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+              <span
+                style="font-family:'Space Mono',monospace;font-size:9px;color:#C09030;letter-spacing:.06em">USD</span>
+              <span id="pct-usd"
+                style="font-family:'Space Mono',monospace;font-size:9px;color:#C09030;font-weight:700">6.91%</span>
+            </div>
+            <div style="height:5px;background:rgba(245,234,224,.06);position:relative;border-radius:1px">
+              <div id="bar-glow-usd"
+                style="position:absolute;left:0;top:50%;transform:translateY(-50%);height:12px;background:linear-gradient(90deg,#9A7320,#C09030);filter:blur(6px);opacity:.5;transition:width 1.1s cubic-bezier(.34,1.15,.64,1);animation:barglow 2.8s ease-in-out infinite;width:6.91%">
+              </div>
+              <div id="bar-usd"
+                style="height:100%;background:linear-gradient(90deg,#9A7320,#C09030);transition:width 1.1s cubic-bezier(.34,1.15,.64,1);position:relative;overflow:hidden;width:6.91%">
+                <div
+                  style="position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);background-size:200% 100%;animation:shimmer 2s linear infinite">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CDF Progress Bar -->
+          <div style="margin-bottom:36px">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+              <span
+                style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.4);letter-spacing:.06em">FC
+                (Francs Congolais)</span>
+              <span id="remaining-display"
+                style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.28)">FC 332M
+                restants</span>
+            </div>
+            <div style="height:5px;background:rgba(245,234,224,.04);position:relative;border-radius:1px">
+              <div id="bar-cdf"
+                style="height:100%;background:linear-gradient(90deg,rgba(192,144,48,.5),rgba(192,144,48,.5));transition:width 1.1s cubic-bezier(.34,1.15,.64,1);width:6.91%">
+                <div
+                  style="position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);background-size:200% 100%;animation:shimmer 2.5s linear infinite">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(192,144,48,.1)">
+          <div style="background:#080F1E;padding:20px 12px;text-align:center">
+            <div id="donors-display"
+              style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:#F5EAE0">87</div>
+            <div
+              style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.3);text-transform:uppercase;letter-spacing:.12em;margin-top:5px">
+              Donateurs</div>
+          </div>
+          <div style="background:#080F1E;padding:20px 12px;text-align:center">
+            <div id="avg-display"
+              style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:#F5EAE0">$99</div>
+            <div
+              style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.3);text-transform:uppercase;letter-spacing:.12em;margin-top:5px">
+              Don moyen</div>
+          </div>
+          <div style="background:#080F1E;padding:20px 12px;text-align:center">
+            <div id="days-left"
+              style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:#F5EAE0">4j</div>
+            <div
+              style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.3);text-transform:uppercase;letter-spacing:.12em;margin-top:5px">
+              Avant le gala</div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- CDF Progress Bar -->
-      <div style="margin-bottom:36px">
-        <div style="display:flex;justify-content:space-between;margin-bottom:8px">
-          <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.4);letter-spacing:.06em">FC (Francs Congolais)</span>
-          <span id="remaining-display" style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.28)">FC 332M restants</span>
-        </div>
-        <div style="height:5px;background:rgba(245,234,224,.04);position:relative;border-radius:1px">
-          <div id="bar-cdf" style="height:100%;background:linear-gradient(90deg,rgba(192,144,48,.5),rgba(192,144,48,.5));transition:width 1.1s cubic-bezier(.34,1.15,.64,1);width:6.91%">
-            <div style="position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);background-size:200% 100%;animation:shimmer 2.5s linear infinite"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="hline"></div>
 
-    <!-- Stats -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(192,144,48,.1)">
-      <div style="background:#080F1E;padding:20px 12px;text-align:center"><div id="donors-display" style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:#F5EAE0">87</div><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.3);text-transform:uppercase;letter-spacing:.12em;margin-top:5px">Donateurs</div></div>
-      <div style="background:#080F1E;padding:20px 12px;text-align:center"><div id="avg-display" style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:#F5EAE0">$99</div><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.3);text-transform:uppercase;letter-spacing:.12em;margin-top:5px">Don moyen</div></div>
-      <div style="background:#080F1E;padding:20px 12px;text-align:center"><div id="days-left" style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:#F5EAE0">4j</div><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.3);text-transform:uppercase;letter-spacing:.12em;margin-top:5px">Avant le gala</div></div>
-    </div>
-  </div>
-</section>
-
-<div class="hline"></div>
-
-<!-- MISSION -->
-<section id="mission" style="padding:100px clamp(16px,6vw,60px)">
-  <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(40px,6vw,80px);align-items:center">
-    <div>
-      <div class="ornament" style="justify-content:flex-start"><div class="orn-line"></div><span style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.22em">Notre mission</span></div>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,54px);font-weight:300;line-height:1.1;color:#F5EAE0;margin-bottom:6px">Porter la voix</h2>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,54px);font-weight:700;font-style:italic;color:#C09030;margin-bottom:28px">des oubliés.</h2>
-      <p style="color:rgba(245,234,224,.6);font-size:16px;line-height:1.85;font-weight:300;margin-bottom:20px">Bread of Charity est une <strong style="color:#F5EAE0;font-weight:500">initiative humanitaire</strong> engagée à porter la voix, la douleur et la faim des enfants de la rue de Kinshasa.</p>
-      <p style="color:rgba(245,234,224,.6);font-size:16px;line-height:1.85;font-weight:300;margin-bottom:24px">Nous travaillons à mettre en place une cantine populaire pour leur permettre de manger régulièrement. Au-delà de les nourrir, nous voulons les encadrer avec amour et les former à des métiers manuels.</p>
-      <div style="border-left:2px solid #C09030;padding-left:20px">
-        <p style="color:rgba(245,234,224,.72);font-size:17px;line-height:1.8;font-style:italic;font-family:'Cormorant Garamond',serif">"Ensemble, nous changeons des vies, car aucun enfant ne devrait avoir faim." 🍞🧡</p>
-      </div>
-    </div>
-    <div style="background:rgba(192,144,48,.04);border:1px solid rgba(192,144,48,.12);padding:36px;position:relative">
-      <div class="corner co-tl"></div><div class="corner co-tr"></div><div class="corner co-bl"></div><div class="corner co-br"></div>
-      <div style="display:flex;gap:18px;align-items:flex-start;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(192,144,48,.08)">
-        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#9A7320,#C09030);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🍞</div>
-        <div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#F5EAE0;margin-bottom:5px">Nourrir</div><div style="font-size:14px;color:rgba(245,234,224,.5);line-height:1.7;font-weight:300">Des repas chauds, nutritifs et gratuits chaque jour pour chaque enfant.</div></div>
-      </div>
-      <div style="display:flex;gap:18px;align-items:flex-start;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(192,144,48,.08)">
-        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#9A7320,#C09030);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🤝</div>
-        <div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#F5EAE0;margin-bottom:5px">Encadrer</div><div style="font-size:14px;color:rgba(245,234,224,.5);line-height:1.7;font-weight:300">Un espace d'accueil, de sécurité et d'amour pour les plus vulnérables.</div></div>
-      </div>
-      <div style="display:flex;gap:18px;align-items:flex-start">
-        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#9A7320,#C09030);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🌅</div>
-        <div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#F5EAE0;margin-bottom:5px">Former</div><div style="font-size:14px;color:rgba(245,234,224,.5);line-height:1.7;font-weight:300">Des métiers manuels pour leur offrir autonomie et un vrai avenir.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="hline"></div>
-
-<!-- GALA -->
-<section id="gala" style="padding:100px clamp(16px,6vw,60px)">
-  <div style="max-width:960px;margin:0 auto">
-    <div class="invitation" style="padding:clamp(32px,6vw,72px)">
-      <div class="corner co-tl"></div><div class="corner co-tr"></div><div class="corner co-bl"></div><div class="corner co-br"></div>
-      <div style="text-align:center;margin-bottom:48px">
-        <img id="gala-logo" alt="BOC" style="height:56px;mix-blend-mode:screen;margin-bottom:20px"/>
-        <div class="ornament"><div class="orn-line"></div><div class="orn-diamond"></div><div class="orn-line rev"></div></div>
-        <div style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.32em;margin-bottom:16px">Vous êtes cordialement invité(e) — Leur sort est entre nos mains !</div>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,6vw,60px);font-weight:300;color:#F5EAE0;line-height:1.1;margin-bottom:4px">Soirée de Gala</h2>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,6vw,60px);font-weight:700;font-style:italic;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1;margin-bottom:20px">Bread of Charity</h2>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:rgba(245,234,224,.6)">Samedi 31 mai 2026</div>
-        <div style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(245,234,224,.32);margin-top:6px;letter-spacing:.1em">Hôtel Fleuve Congo · Kinshasa, RDC</div>
-        <div class="ornament" style="margin-top:24px;margin-bottom:0"><div class="orn-line"></div><div class="orn-diamond"></div><div class="orn-line rev"></div></div>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(32px,5vw,60px);align-items:center">
+    <!-- MISSION -->
+    <section id="mission" style="padding:100px clamp(16px,6vw,60px)">
+      <div
+        style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(40px,6vw,80px);align-items:center">
         <div>
-          <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:36px">
-            <div style="display:flex;gap:16px;align-items:center"><div style="width:34px;height:34px;border:1px solid rgba(192,144,48,.3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">📍</div><div><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px">Lieu</div><div style="font-size:15px;color:#F5EAE0">Hôtel Fleuve Congo, Kinshasa</div></div></div>
-            <div style="display:flex;gap:16px;align-items:center"><div style="width:34px;height:34px;border:1px solid rgba(192,144,48,.3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🕖</div><div><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px">Horaire</div><div style="font-size:15px;color:#F5EAE0">Accueil des invités à partir de 17h00</div></div></div>
-            <div style="display:flex;gap:16px;align-items:center"><div style="width:34px;height:34px;border:1px solid rgba(192,144,48,.3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🥂</div><div><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px">Programme</div><div style="font-size:15px;color:#F5EAE0">Cocktail · Dînatoire · Spectacles artistiques</div></div></div>
-            <div style="display:flex;gap:16px;align-items:center"><div style="width:34px;height:34px;border:1px solid rgba(192,144,48,.3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">✨</div><div><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px">Levée de fonds</div><div style="font-size:15px;color:#F5EAE0">En direct sur scène</div></div></div>
+          <div class="ornament" style="justify-content:flex-start">
+            <div class="orn-line"></div><span
+              style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.22em">Notre
+              mission</span>
           </div>
-          <button class="btn-red" onclick="go('donate')">Réserver votre place →</button>
-        </div>
-        <div>
-          <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.3);text-transform:uppercase;letter-spacing:.2em;margin-bottom:20px;text-align:center">La soirée commence dans</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(192,144,48,.12)">
-            <div style="background:rgba(5,9,16,.85);padding:24px 10px;text-align:center"><div id="g-days" style="font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:700;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;font-variant-numeric:tabular-nums">04</div><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.25);text-transform:uppercase;letter-spacing:.12em;margin-top:8px">Jours</div></div>
-            <div style="background:rgba(5,9,16,.85);padding:24px 10px;text-align:center"><div id="g-hours" style="font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:700;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;font-variant-numeric:tabular-nums">00</div><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.25);text-transform:uppercase;letter-spacing:.12em;margin-top:8px">Heures</div></div>
-            <div style="background:rgba(5,9,16,.85);padding:24px 10px;text-align:center"><div id="g-min" style="font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:700;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;font-variant-numeric:tabular-nums">00</div><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.25);text-transform:uppercase;letter-spacing:.12em;margin-top:8px">Minutes</div></div>
-            <div style="background:rgba(5,9,16,.85);padding:24px 10px;text-align:center"><div id="g-sec" style="font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:700;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;font-variant-numeric:tabular-nums">00</div><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.25);text-transform:uppercase;letter-spacing:.12em;margin-top:8px">Secondes</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="hline"></div>
-
-<!-- DONATE -->
-
-<!-- ══ SECTION MOYENS DE PAIEMENT ══ -->
-<section id="paiement" style="padding:80px clamp(16px,6vw,60px)">
-  <div style="max-width:860px;margin:0 auto">
-    <div style="text-align:center;margin-bottom:48px">
-      <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:16px">
-        <div style="height:1px;flex:1;max-width:60px;background:linear-gradient(90deg,transparent,rgba(192,144,48,.6))"></div>
-        <div style="width:6px;height:6px;background:#C09030;transform:rotate(45deg)"></div>
-        <span style="font-family:'Space Mono',monospace;font-size:9px;color:#C09030;text-transform:uppercase;letter-spacing:.22em">Moyens de contribution</span>
-        <div style="width:6px;height:6px;background:#C09030;transform:rotate(45deg)"></div>
-        <div style="height:1px;flex:1;max-width:60px;background:linear-gradient(90deg,rgba(192,144,48,.6),transparent)"></div>
-      </div>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,48px);font-weight:300;color:#F5EAE0;margin-bottom:6px">Comment contribuer</h2>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,48px);font-weight:700;font-style:italic;color:#C09030">à notre cause ?</h2>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
-
-      <!-- Orange Money -->
-      <div style="background:rgba(255,248,235,.02);border:1px solid rgba(192,144,48,.12);padding:28px 24px;position:relative;transition:all .3s" onmouseover="this.style.borderColor='rgba(192,144,48,.3)';this.style.background='rgba(192,144,48,.04)'" onmouseout="this.style.borderColor='rgba(192,144,48,.12)';this.style.background='rgba(255,248,235,.02)'">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#FF6600,#FF9900);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📳</div>
-          <div>
-            <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:#F5EAE0">Orange Money</div>
-            <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);letter-spacing:.06em;text-transform:uppercase">Mobile Money</div>
+          <h2
+            style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,54px);font-weight:300;line-height:1.1;color:#F5EAE0;margin-bottom:6px">
+            Porter la voix</h2>
+          <h2
+            style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,54px);font-weight:700;font-style:italic;color:#C09030;margin-bottom:28px">
+            des oubliés.</h2>
+          <p style="color:rgba(245,234,224,.6);font-size:16px;line-height:1.85;font-weight:300;margin-bottom:20px">Bread
+            of Charity est une <strong style="color:#F5EAE0;font-weight:500">initiative humanitaire</strong> engagée à
+            porter la voix, la douleur et la faim des enfants de la rue de Kinshasa.</p>
+          <p style="color:rgba(245,234,224,.6);font-size:16px;line-height:1.85;font-weight:300;margin-bottom:24px">Nous
+            travaillons à mettre en place une cantine populaire pour leur permettre de manger régulièrement. Au-delà de
+            les nourrir, nous voulons les encadrer avec amour et les former à des métiers manuels.</p>
+          <div style="border-left:2px solid #C09030;padding-left:20px">
+            <p
+              style="color:rgba(245,234,224,.72);font-size:17px;line-height:1.8;font-style:italic;font-family:'Cormorant Garamond',serif">
+              "Ensemble, nous changeons des vies, car aucun enfant ne devrait avoir faim." 🍞🧡</p>
           </div>
         </div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:#C09030;margin-bottom:8px">+243 808 098 842</div>
-        <button onclick="copyNum('+243808098842',this)" style="padding:5px 14px;border:1px solid rgba(192,144,48,.3);background:transparent;color:#C09030;font-family:'Space Mono',monospace;font-size:8px;cursor:pointer;letter-spacing:.05em;transition:all .2s" onmouseover="this.style.background='rgba(192,144,48,.1)'" onmouseout="this.style.background='transparent'">Copier</button>
-      </div>
-
-      <!-- M-Pesa -->
-      <div style="background:rgba(255,248,235,.02);border:1px solid rgba(192,144,48,.12);padding:28px 24px;position:relative;transition:all .3s" onmouseover="this.style.borderColor='rgba(192,144,48,.3)';this.style.background='rgba(192,144,48,.04)'" onmouseout="this.style.borderColor='rgba(192,144,48,.12)';this.style.background='rgba(255,248,235,.02)'">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#E31837,#FF6666);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📲</div>
-          <div>
-            <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:#F5EAE0">M-Pesa</div>
-            <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);letter-spacing:.06em;text-transform:uppercase">Mobile Money</div>
-          </div>
-        </div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:#C09030;margin-bottom:8px">+243 830 570 111</div>
-        <button onclick="copyNum('+243830570111',this)" style="padding:5px 14px;border:1px solid rgba(192,144,48,.3);background:transparent;color:#C09030;font-family:'Space Mono',monospace;font-size:8px;cursor:pointer;letter-spacing:.05em;transition:all .2s" onmouseover="this.style.background='rgba(192,144,48,.1)'" onmouseout="this.style.background='transparent'">Copier</button>
-      </div>
-
-      <!-- Airtel Money -->
-      <div style="background:rgba(255,248,235,.02);border:1px solid rgba(192,144,48,.12);padding:28px 24px;position:relative;transition:all .3s" onmouseover="this.style.borderColor='rgba(192,144,48,.3)';this.style.background='rgba(192,144,48,.04)'" onmouseout="this.style.borderColor='rgba(192,144,48,.12)';this.style.background='rgba(255,248,235,.02)'">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#CC0000,#FF3333);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📱</div>
-          <div>
-            <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:#F5EAE0">Airtel Money</div>
-            <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);letter-spacing:.06em;text-transform:uppercase">Mobile Money</div>
-          </div>
-        </div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:#C09030;margin-bottom:8px">+243 988 742 356</div>
-        <button onclick="copyNum('+243988742356',this)" style="padding:5px 14px;border:1px solid rgba(192,144,48,.3);background:transparent;color:#C09030;font-family:'Space Mono',monospace;font-size:8px;cursor:pointer;letter-spacing:.05em;transition:all .2s" onmouseover="this.style.background='rgba(192,144,48,.1)'" onmouseout="this.style.background='transparent'">Copier</button>
-      </div>
-
-      <!-- Equity BCDC -->
-      <div style="background:rgba(255,248,235,.02);border:1px solid rgba(192,144,48,.18);padding:28px 24px;position:relative;transition:all .3s;grid-column:span 1" onmouseover="this.style.borderColor='rgba(192,144,48,.35)';this.style.background='rgba(192,144,48,.05)'" onmouseout="this.style.borderColor='rgba(192,144,48,.18)';this.style.background='rgba(255,248,235,.02)'">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#1B4F72,#2E86C1);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🏦</div>
-          <div>
-            <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:#F5EAE0">Equity BCDC</div>
-            <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);letter-spacing:.06em;text-transform:uppercase">Virement Bancaire</div>
-          </div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="background:rgba(192,144,48,.06);border-left:2px solid rgba(192,144,48,.4);padding:10px 14px">
-            <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Compte CDF (Francs Congolais)</div>
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:#D4A843">266 100 213 719 474</div>
-              <button onclick="copyNum('266100213719474',this)" style="padding:4px 10px;border:1px solid rgba(192,144,48,.3);background:transparent;color:#C09030;font-family:'Space Mono',monospace;font-size:8px;cursor:pointer;flex-shrink:0" onmouseover="this.style.background='rgba(192,144,48,.1)'" onmouseout="this.style.background='transparent'">Copier</button>
+        <div
+          style="background:rgba(192,144,48,.04);border:1px solid rgba(192,144,48,.12);padding:36px;position:relative">
+          <div class="corner co-tl"></div>
+          <div class="corner co-tr"></div>
+          <div class="corner co-bl"></div>
+          <div class="corner co-br"></div>
+          <div
+            style="display:flex;gap:18px;align-items:flex-start;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(192,144,48,.08)">
+            <div
+              style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#9A7320,#C09030);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">
+              🍞</div>
+            <div>
+              <div
+                style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#F5EAE0;margin-bottom:5px">
+                Nourrir</div>
+              <div style="font-size:14px;color:rgba(245,234,224,.5);line-height:1.7;font-weight:300">Des repas chauds,
+                nutritifs et gratuits chaque jour pour chaque enfant.</div>
             </div>
           </div>
-          <div style="background:rgba(192,144,48,.06);border-left:2px solid rgba(192,144,48,.4);padding:10px 14px">
-            <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Compte USD (Dollars)</div>
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:#D4A843">266 100 213 720 444</div>
-              <button onclick="copyNum('266100213720444',this)" style="padding:4px 10px;border:1px solid rgba(192,144,48,.3);background:transparent;color:#C09030;font-family:'Space Mono',monospace;font-size:8px;cursor:pointer;flex-shrink:0" onmouseover="this.style.background='rgba(192,144,48,.1)'" onmouseout="this.style.background='transparent'">Copier</button>
+          <div
+            style="display:flex;gap:18px;align-items:flex-start;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(192,144,48,.08)">
+            <div
+              style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#9A7320,#C09030);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">
+              🤝</div>
+            <div>
+              <div
+                style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#F5EAE0;margin-bottom:5px">
+                Encadrer</div>
+              <div style="font-size:14px;color:rgba(245,234,224,.5);line-height:1.7;font-weight:300">Un espace
+                d'accueil, de sécurité et d'amour pour les plus vulnérables.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:18px;align-items:flex-start">
+            <div
+              style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#9A7320,#C09030);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">
+              🌅</div>
+            <div>
+              <div
+                style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#F5EAE0;margin-bottom:5px">
+                Former</div>
+              <div style="font-size:14px;color:rgba(245,234,224,.5);line-height:1.7;font-weight:300">Des métiers manuels
+                pour leur offrir autonomie et un vrai avenir.</div>
             </div>
           </div>
         </div>
-        <div style="margin-top:12px;font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.35);letter-spacing:.04em">Bénéficiaire : <span style="color:#C09030">Bread of Charity</span></div>
       </div>
+    </section>
 
-    </div>
+    <div class="hline"></div>
 
-    <!-- Référence + Contact -->
-    <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
-      <div style="background:rgba(192,144,48,.07);border:1px solid rgba(192,144,48,.15);padding:16px 20px">
-        <div style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px">Référence de paiement</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#F5EAE0;letter-spacing:.05em">BOC-GALA-2026</div>
-        <div style="font-size:12px;color:rgba(245,234,224,.4);margin-top:4px">À mentionner dans chaque paiement</div>
-      </div>
-      <div style="background:rgba(192,144,48,.07);border:1px solid rgba(192,144,48,.15);padding:16px 20px">
-        <div style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px">Plus d'informations</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#F5EAE0">+243 811 907 743</div>
-        <div style="font-size:12px;color:rgba(245,234,224,.4);margin-top:4px">breadofcharity1@gmail.com</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div style="width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(192,144,48,.22),transparent)"></div>
-
-<section id="donate" style="padding:100px clamp(16px,6vw,60px) 80px">
-  <div style="max-width:560px;margin:0 auto">
-    <div style="text-align:center;margin-bottom:48px">
-      <div class="ornament"><div class="orn-line"></div><div class="orn-diamond"></div><div class="orn-line rev"></div></div>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,52px);font-weight:300;color:#F5EAE0;margin-bottom:4px">Rejoignez</h2>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,52px);font-weight:700;font-style:italic;color:#C09030;margin-bottom:16px">le mouvement.</h2>
-      <p style="color:rgba(245,234,224,.45);font-size:18px;font-weight:300;line-height:1.7;font-family:'Cormorant Garamond',serif">Chaque contribution nourrit un enfant de plus à Kinshasa.</p>
-    </div>
-    <div id="donate-card" style="background:rgba(8,15,30,.85);border:1px solid rgba(192,144,48,.18);padding:clamp(24px,5vw,40px);position:relative">
-      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9A7320,#C09030,transparent)"></div>
-      <div class="corner co-tl"></div><div class="corner co-tr"></div><div class="corner co-bl"></div><div class="corner co-br"></div>
-
-      <!-- NOM -->
-      <div style="margin-bottom:22px">
-        <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.32);text-transform:uppercase;letter-spacing:.2em;margin-bottom:8px">Votre nom</div>
-        <input id="donor-name" type="text" placeholder="Anonyme" maxlength="80" style="width:100%;padding:11px 0;background:transparent;border:none;border-bottom:1px solid rgba(192,144,48,.2);color:#F5EAE0;font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border-color .2s" onfocus="this.style.borderBottomColor='rgba(192,144,48,.6)'" onblur="this.style.borderBottomColor='rgba(192,144,48,.2)'"/>
-      </div>
-
-      <!-- MONTANT -->
-      <div style="margin-bottom:18px">
-        <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.32);text-transform:uppercase;letter-spacing:.2em;margin-bottom:10px">Montant</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px">
-          <button class="amount-btn" onclick="selAmt(10,this)">$10</button>
-          <button class="amount-btn" onclick="selAmt(25,this)">$25</button>
-          <button class="amount-btn active" onclick="selAmt(50,this)">$50</button>
-          <button class="amount-btn" onclick="selAmt(100,this)">$100</button>
-          <button class="amount-btn" onclick="selAmt(500,this)">$500</button>
-          <button class="amount-btn" onclick="selAmt(1000,this)">$1 000</button>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(192,144,48,.2);padding-bottom:4px">
-          <input id="custom-amount" type="number" min="1" placeholder="Autre montant..." style="flex:1;padding:8px 0;background:transparent;border:none;color:#F5EAE0;font-family:'Cormorant Garamond',serif;font-size:18px;outline:none" onfocus="clearPresets()" oninput="customAmt(this.value)"/>
-          <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.3)">USD</span>
-        </div>
-        <!-- CDF equivalent preview -->
-        <div id="cdf-preview" style="margin-top:8px;font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.3);letter-spacing:.04em">≈ FC 142 500 (Francs Congolais)</div>
-      </div>
-
-      <!-- IMPACT -->
-      <div id="impact-preview" style="padding:12px 16px;margin-bottom:22px;background:rgba(192,144,48,.06);border-left:2px solid #C09030">
-        <span style="color:#C09030;font-weight:600;font-family:'Cormorant Garamond',serif;font-size:17px">$50 </span><span style="font-size:14px;color:rgba(245,234,224,.5);font-weight:300">= ustensiles + 100 repas chauds</span>
-      </div>
-
-      <!-- MODE PAIEMENT -->
-      <div style="margin-bottom:22px">
-        <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.32);text-transform:uppercase;letter-spacing:.2em;margin-bottom:12px">Mode de paiement</div>
-        <div style="display:flex;gap:8px">
-          <button class="pay-method active" onclick="selPay('mobile',this)"><div style="font-size:20px;margin-bottom:4px">📱</div><div style="font-size:10px;color:#F5EAE0;font-weight:500;font-family:'DM Sans',sans-serif">Mobile Money</div><div style="font-size:8px;color:rgba(245,234,224,.38);margin-top:2px;font-family:'Space Mono',monospace">Airtel · Mpesa</div></button>
-          <button class="pay-method" onclick="selPay('cash',this)"><div style="font-size:20px;margin-bottom:4px">💵</div><div style="font-size:10px;color:#F5EAE0;font-weight:500;font-family:'DM Sans',sans-serif">Espèces</div><div style="font-size:8px;color:rgba(245,234,224,.38);margin-top:2px;font-family:'Space Mono',monospace">Cash sur place</div></button>
-          <button class="pay-method" onclick="selPay('card',this)"><div style="font-size:20px;margin-bottom:4px">💳</div><div style="font-size:10px;color:#F5EAE0;font-weight:500;font-family:'DM Sans',sans-serif">Carte</div><div style="font-size:8px;color:rgba(245,234,224,.38);margin-top:2px;font-family:'Space Mono',monospace">Internationale</div></button>
-        </div>
-
-        <!-- Mobile Money -->
-        <div id="pay-mobile" class="pay-detail">
-          <div style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px">Envoyez votre don au :</div>
-          <div class="pay-info-row"><div style="font-size:18px;flex-shrink:0">📱</div><div style="flex:1"><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em">Airtel Money</div><div id="airtel-num" style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#F5EAE0;margin-top:2px">+243 988 742 356</div></div><button class="copy-btn" onclick="doCopy(document.getElementById('airtel-num').textContent,this)">Copier</button></div>
-          <div class="pay-info-row"><div style="font-size:18px;flex-shrink:0">📲</div><div style="flex:1"><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em">M-Pesa</div><div id="mpesa-num" style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#F5EAE0;margin-top:2px">+243 830 570 111</div></div><button class="copy-btn" onclick="doCopy(document.getElementById('mpesa-num').textContent,this)">Copier</button></div>
-          <div style="margin-top:12px;padding:10px 12px;background:rgba(192,144,48,.05);border-left:2px solid rgba(192,144,48,.3)"><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Référence obligatoire</div><div style="font-family:'Space Mono',monospace;font-size:13px;color:#C09030;letter-spacing:.1em">BOC-GALA-2026</div></div>
-          <div style="margin-top:10px;font-size:12px;color:rgba(245,234,224,.32);font-style:italic">📸 Envoyez la confirmation à <span style="color:#C09030">breadofcharity1@gmail.com</span></div>
-        </div>
-
-        <!-- Espèces -->
-        <div id="pay-cash" class="pay-detail" style="display:none">
-          <div style="text-align:center;padding:8px 0">
-            <div style="font-size:36px;margin-bottom:12px">💵</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#F5EAE0;margin-bottom:10px">Don en espèces</div>
-            <div style="font-size:14px;color:rgba(245,234,224,.5);line-height:1.75;margin-bottom:14px">Remettez votre don en espèces directement à notre équipe sur place lors de la soirée gala.</div>
-            <div style="background:rgba(192,144,48,.07);border:1px solid rgba(192,144,48,.2);padding:14px 16px;text-align:left">
-              <div style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px">Point de collecte</div>
-              <div style="font-size:14px;color:#F5EAE0;line-height:1.6">📍 Table d'accueil — Hôtel Fleuve Congo<br>🕖 Disponible dès 18h30<br>📧 breadofcharity1@gmail.com</div>
+    <!-- GALA -->
+    <section id="gala" style="padding:100px clamp(16px,6vw,60px)">
+      <div style="max-width:960px;margin:0 auto">
+        <div class="invitation" style="padding:clamp(32px,6vw,72px)">
+          <div class="corner co-tl"></div>
+          <div class="corner co-tr"></div>
+          <div class="corner co-bl"></div>
+          <div class="corner co-br"></div>
+          <div style="text-align:center;margin-bottom:48px">
+            <img id="gala-logo" alt="BOC" style="height:56px;mix-blend-mode:screen;margin-bottom:20px" />
+            <div class="ornament">
+              <div class="orn-line"></div>
+              <div class="orn-diamond"></div>
+              <div class="orn-line rev"></div>
             </div>
-            <div style="margin-top:12px;font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.3);letter-spacing:.06em">Un reçu vous sera remis sur place</div>
+            <div
+              style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.32em;margin-bottom:16px">
+              Vous êtes cordialement invité(e) — Leur sort est entre nos mains !</div>
+            <h2
+              style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,6vw,60px);font-weight:300;color:#F5EAE0;line-height:1.1;margin-bottom:4px">
+              Soirée de Gala</h2>
+            <h2
+              style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,6vw,60px);font-weight:700;font-style:italic;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1;margin-bottom:20px">
+              Bread of Charity</h2>
+            <div
+              style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:rgba(245,234,224,.6)">
+              Samedi 31 mai 2026</div>
+            <div
+              style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(245,234,224,.32);margin-top:6px;letter-spacing:.1em">
+              Hôtel Fleuve Congo · Kinshasa, RDC</div>
+            <div class="ornament" style="margin-top:24px;margin-bottom:0">
+              <div class="orn-line"></div>
+              <div class="orn-diamond"></div>
+              <div class="orn-line rev"></div>
+            </div>
+          </div>
+          <div
+            style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(32px,5vw,60px);align-items:center">
+            <div>
+              <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:36px">
+                <div style="display:flex;gap:16px;align-items:center">
+                  <div
+                    style="width:34px;height:34px;border:1px solid rgba(192,144,48,.3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">
+                    📍</div>
+                  <div>
+                    <div
+                      style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px">
+                      Lieu</div>
+                    <div style="font-size:15px;color:#F5EAE0">Hôtel Fleuve Congo, Kinshasa</div>
+                  </div>
+                </div>
+                <div style="display:flex;gap:16px;align-items:center">
+                  <div
+                    style="width:34px;height:34px;border:1px solid rgba(192,144,48,.3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">
+                    🕖</div>
+                  <div>
+                    <div
+                      style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px">
+                      Horaire</div>
+                    <div style="font-size:15px;color:#F5EAE0">Accueil des invités à partir de 17h00</div>
+                  </div>
+                </div>
+                <div style="display:flex;gap:16px;align-items:center">
+                  <div
+                    style="width:34px;height:34px;border:1px solid rgba(192,144,48,.3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">
+                    🥂</div>
+                  <div>
+                    <div
+                      style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px">
+                      Programme</div>
+                    <div style="font-size:15px;color:#F5EAE0">Cocktail · Dînatoire · Spectacles artistiques</div>
+                  </div>
+                </div>
+                <div style="display:flex;gap:16px;align-items:center">
+                  <div
+                    style="width:34px;height:34px;border:1px solid rgba(192,144,48,.3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">
+                    ✨</div>
+                  <div>
+                    <div
+                      style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px">
+                      Levée de fonds</div>
+                    <div style="font-size:15px;color:#F5EAE0">En direct sur scène</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-red" onclick="go('donate')">Réserver votre place →</button>
+            </div>
+            <div>
+              <div
+                style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.3);text-transform:uppercase;letter-spacing:.2em;margin-bottom:20px;text-align:center">
+                La soirée commence dans</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(192,144,48,.12)">
+                <div style="background:rgba(5,9,16,.85);padding:24px 10px;text-align:center">
+                  <div id="g-days"
+                    style="font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:700;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;font-variant-numeric:tabular-nums">
+                    04</div>
+                  <div
+                    style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.25);text-transform:uppercase;letter-spacing:.12em;margin-top:8px">
+                    Jours</div>
+                </div>
+                <div style="background:rgba(5,9,16,.85);padding:24px 10px;text-align:center">
+                  <div id="g-hours"
+                    style="font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:700;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;font-variant-numeric:tabular-nums">
+                    00</div>
+                  <div
+                    style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.25);text-transform:uppercase;letter-spacing:.12em;margin-top:8px">
+                    Heures</div>
+                </div>
+                <div style="background:rgba(5,9,16,.85);padding:24px 10px;text-align:center">
+                  <div id="g-min"
+                    style="font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:700;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;font-variant-numeric:tabular-nums">
+                    00</div>
+                  <div
+                    style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.25);text-transform:uppercase;letter-spacing:.12em;margin-top:8px">
+                    Minutes</div>
+                </div>
+                <div style="background:rgba(5,9,16,.85);padding:24px 10px;text-align:center">
+                  <div id="g-sec"
+                    style="font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:700;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;font-variant-numeric:tabular-nums">
+                    00</div>
+                  <div
+                    style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.25);text-transform:uppercase;letter-spacing:.12em;margin-top:8px">
+                    Secondes</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="hline"></div>
+
+    <!-- DONATE -->
+
+    <!-- ══ SECTION MOYENS DE PAIEMENT ══ -->
+    <section id="paiement" style="padding:80px clamp(16px,6vw,60px)">
+      <div style="max-width:860px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:48px">
+          <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:16px">
+            <div
+              style="height:1px;flex:1;max-width:60px;background:linear-gradient(90deg,transparent,rgba(192,144,48,.6))">
+            </div>
+            <div style="width:6px;height:6px;background:#C09030;transform:rotate(45deg)"></div>
+            <span
+              style="font-family:'Space Mono',monospace;font-size:9px;color:#C09030;text-transform:uppercase;letter-spacing:.22em">Moyens
+              de contribution</span>
+            <div style="width:6px;height:6px;background:#C09030;transform:rotate(45deg)"></div>
+            <div
+              style="height:1px;flex:1;max-width:60px;background:linear-gradient(90deg,rgba(192,144,48,.6),transparent)">
+            </div>
+          </div>
+          <h2
+            style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,48px);font-weight:300;color:#F5EAE0;margin-bottom:6px">
+            Comment contribuer</h2>
+          <h2
+            style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,48px);font-weight:700;font-style:italic;color:#C09030">
+            à notre cause ?</h2>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+
+          <!-- Orange Money -->
+          <div
+            style="background:rgba(255,248,235,.02);border:1px solid rgba(192,144,48,.12);padding:28px 24px;position:relative;transition:all .3s"
+            onmouseover="this.style.borderColor='rgba(192,144,48,.3)';this.style.background='rgba(192,144,48,.04)'"
+            onmouseout="this.style.borderColor='rgba(192,144,48,.12)';this.style.background='rgba(255,248,235,.02)'">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+              <div
+                style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#FF6600,#FF9900);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
+                📳</div>
+              <div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:#F5EAE0">Orange Money
+                </div>
+                <div
+                  style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);letter-spacing:.06em;text-transform:uppercase">
+                  Mobile Money</div>
+              </div>
+            </div>
+            <div
+              style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:#C09030;margin-bottom:8px">
+              +243 808 098 842</div>
+            <button onclick="copyNum('+243808098842',this)"
+              style="padding:5px 14px;border:1px solid rgba(192,144,48,.3);background:transparent;color:#C09030;font-family:'Space Mono',monospace;font-size:8px;cursor:pointer;letter-spacing:.05em;transition:all .2s"
+              onmouseover="this.style.background='rgba(192,144,48,.1)'"
+              onmouseout="this.style.background='transparent'">Copier</button>
+          </div>
+
+          <!-- M-Pesa -->
+          <div
+            style="background:rgba(255,248,235,.02);border:1px solid rgba(192,144,48,.12);padding:28px 24px;position:relative;transition:all .3s"
+            onmouseover="this.style.borderColor='rgba(192,144,48,.3)';this.style.background='rgba(192,144,48,.04)'"
+            onmouseout="this.style.borderColor='rgba(192,144,48,.12)';this.style.background='rgba(255,248,235,.02)'">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+              <div
+                style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#E31837,#FF6666);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
+                📲</div>
+              <div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:#F5EAE0">M-Pesa</div>
+                <div
+                  style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);letter-spacing:.06em;text-transform:uppercase">
+                  Mobile Money</div>
+              </div>
+            </div>
+            <div
+              style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:#C09030;margin-bottom:8px">
+              +243 830 570 111</div>
+            <button onclick="copyNum('+243830570111',this)"
+              style="padding:5px 14px;border:1px solid rgba(192,144,48,.3);background:transparent;color:#C09030;font-family:'Space Mono',monospace;font-size:8px;cursor:pointer;letter-spacing:.05em;transition:all .2s"
+              onmouseover="this.style.background='rgba(192,144,48,.1)'"
+              onmouseout="this.style.background='transparent'">Copier</button>
+          </div>
+
+          <!-- Airtel Money -->
+          <div
+            style="background:rgba(255,248,235,.02);border:1px solid rgba(192,144,48,.12);padding:28px 24px;position:relative;transition:all .3s"
+            onmouseover="this.style.borderColor='rgba(192,144,48,.3)';this.style.background='rgba(192,144,48,.04)'"
+            onmouseout="this.style.borderColor='rgba(192,144,48,.12)';this.style.background='rgba(255,248,235,.02)'">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+              <div
+                style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#CC0000,#FF3333);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
+                📱</div>
+              <div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:#F5EAE0">Airtel Money
+                </div>
+                <div
+                  style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);letter-spacing:.06em;text-transform:uppercase">
+                  Mobile Money</div>
+              </div>
+            </div>
+            <div
+              style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:#C09030;margin-bottom:8px">
+              +243 988 742 356</div>
+            <button onclick="copyNum('+243988742356',this)"
+              style="padding:5px 14px;border:1px solid rgba(192,144,48,.3);background:transparent;color:#C09030;font-family:'Space Mono',monospace;font-size:8px;cursor:pointer;letter-spacing:.05em;transition:all .2s"
+              onmouseover="this.style.background='rgba(192,144,48,.1)'"
+              onmouseout="this.style.background='transparent'">Copier</button>
+          </div>
+
+          <!-- Equity BCDC -->
+          <div
+            style="background:rgba(255,248,235,.02);border:1px solid rgba(192,144,48,.18);padding:28px 24px;position:relative;transition:all .3s;grid-column:span 1"
+            onmouseover="this.style.borderColor='rgba(192,144,48,.35)';this.style.background='rgba(192,144,48,.05)'"
+            onmouseout="this.style.borderColor='rgba(192,144,48,.18)';this.style.background='rgba(255,248,235,.02)'">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+              <div
+                style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#1B4F72,#2E86C1);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
+                🏦</div>
+              <div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:#F5EAE0">Equity BCDC
+                </div>
+                <div
+                  style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.4);letter-spacing:.06em;text-transform:uppercase">
+                  Virement Bancaire</div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="background:rgba(192,144,48,.06);border-left:2px solid rgba(192,144,48,.4);padding:10px 14px">
+                <div
+                  style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">
+                  Compte CDF (Francs Congolais)</div>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+                  <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:#D4A843">266
+                    100 213 719 474</div>
+                  <button onclick="copyNum('266100213719474',this)"
+                    style="padding:4px 10px;border:1px solid rgba(192,144,48,.3);background:transparent;color:#C09030;font-family:'Space Mono',monospace;font-size:8px;cursor:pointer;flex-shrink:0"
+                    onmouseover="this.style.background='rgba(192,144,48,.1)'"
+                    onmouseout="this.style.background='transparent'">Copier</button>
+                </div>
+              </div>
+              <div style="background:rgba(192,144,48,.06);border-left:2px solid rgba(192,144,48,.4);padding:10px 14px">
+                <div
+                  style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">
+                  Compte USD (Dollars)</div>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+                  <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:#D4A843">266
+                    100 213 720 444</div>
+                  <button onclick="copyNum('266100213720444',this)"
+                    style="padding:4px 10px;border:1px solid rgba(192,144,48,.3);background:transparent;color:#C09030;font-family:'Space Mono',monospace;font-size:8px;cursor:pointer;flex-shrink:0"
+                    onmouseover="this.style.background='rgba(192,144,48,.1)'"
+                    onmouseout="this.style.background='transparent'">Copier</button>
+                </div>
+              </div>
+            </div>
+            <div
+              style="margin-top:12px;font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.35);letter-spacing:.04em">
+              Bénéficiaire : <span style="color:#C09030">Bread of Charity</span></div>
+          </div>
+
+        </div>
+
+        <!-- Référence + Contact -->
+        <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:rgba(192,144,48,.07);border:1px solid rgba(192,144,48,.15);padding:16px 20px">
+            <div
+              style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px">
+              Référence de paiement</div>
+            <div
+              style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#F5EAE0;letter-spacing:.05em">
+              BOC-GALA-2026</div>
+            <div style="font-size:12px;color:rgba(245,234,224,.4);margin-top:4px">À mentionner dans chaque paiement
+            </div>
+          </div>
+          <div style="background:rgba(192,144,48,.07);border:1px solid rgba(192,144,48,.15);padding:16px 20px">
+            <div
+              style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px">
+              Plus d'informations</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#F5EAE0">+243 811
+              907 743</div>
+            <div style="font-size:12px;color:rgba(245,234,224,.4);margin-top:4px">breadofcharity1@gmail.com</div>
           </div>
         </div>
 
-        <!-- Carte -->
-        <div id="pay-card" class="pay-detail" style="display:none;text-align:center;padding:24px">
-          <div style="font-size:36px;margin-bottom:12px">💳</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#F5EAE0;margin-bottom:8px">Paiement en ligne sécurisé</div>
-          <div style="font-size:13px;color:rgba(245,234,224,.45);line-height:1.7;margin-bottom:16px">Notre plateforme CinetPay est en cours d'activation.<br>Disponible très prochainement.</div>
-          <div style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;letter-spacing:.1em">En attendant → Mobile Money ou Espèces</div>
+      </div>
+    </section>
+
+    <div style="width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(192,144,48,.22),transparent)">
+    </div>
+
+    <section id="donate" style="padding:100px clamp(16px,6vw,60px) 80px">
+      <div style="max-width:560px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:48px">
+          <div class="ornament">
+            <div class="orn-line"></div>
+            <div class="orn-diamond"></div>
+            <div class="orn-line rev"></div>
+          </div>
+          <h2
+            style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,52px);font-weight:300;color:#F5EAE0;margin-bottom:4px">
+            Rejoignez</h2>
+          <h2
+            style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,52px);font-weight:700;font-style:italic;color:#C09030;margin-bottom:16px">
+            le mouvement.</h2>
+          <p
+            style="color:rgba(245,234,224,.45);font-size:18px;font-weight:300;line-height:1.7;font-family:'Cormorant Garamond',serif">
+            Chaque contribution nourrit un enfant de plus à Kinshasa.</p>
+        </div>
+        <div id="donate-card"
+          style="background:rgba(8,15,30,.85);border:1px solid rgba(192,144,48,.18);padding:clamp(24px,5vw,40px);position:relative">
+          <div
+            style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9A7320,#C09030,transparent)">
+          </div>
+          <div class="corner co-tl"></div>
+          <div class="corner co-tr"></div>
+          <div class="corner co-bl"></div>
+          <div class="corner co-br"></div>
+
+          <!-- NOM -->
+          <div style="margin-bottom:22px">
+            <div
+              style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.32);text-transform:uppercase;letter-spacing:.2em;margin-bottom:8px">
+              Votre nom</div>
+            <input id="donor-name" type="text" placeholder="Anonyme" maxlength="80"
+              style="width:100%;padding:11px 0;background:transparent;border:none;border-bottom:1px solid rgba(192,144,48,.2);color:#F5EAE0;font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border-color .2s"
+              onfocus="this.style.borderBottomColor='rgba(192,144,48,.6)'"
+              onblur="this.style.borderBottomColor='rgba(192,144,48,.2)'" />
+          </div>
+
+          <!-- MONTANT -->
+          <div style="margin-bottom:18px">
+            <div
+              style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.32);text-transform:uppercase;letter-spacing:.2em;margin-bottom:10px">
+              Montant</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px">
+              <button class="amount-btn" onclick="selAmt(10,this)">$10</button>
+              <button class="amount-btn" onclick="selAmt(25,this)">$25</button>
+              <button class="amount-btn active" onclick="selAmt(50,this)">$50</button>
+              <button class="amount-btn" onclick="selAmt(100,this)">$100</button>
+              <button class="amount-btn" onclick="selAmt(500,this)">$500</button>
+              <button class="amount-btn" onclick="selAmt(1000,this)">$1 000</button>
+            </div>
+            <div
+              style="display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(192,144,48,.2);padding-bottom:4px">
+              <input id="custom-amount" type="number" min="1" placeholder="Autre montant..."
+                style="flex:1;padding:8px 0;background:transparent;border:none;color:#F5EAE0;font-family:'Cormorant Garamond',serif;font-size:18px;outline:none"
+                onfocus="clearPresets()" oninput="customAmt(this.value)" />
+              <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.3)">USD</span>
+            </div>
+            <!-- CDF equivalent preview -->
+            <div id="cdf-preview"
+              style="margin-top:8px;font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.3);letter-spacing:.04em">
+              ≈ FC 142 500 (Francs Congolais)</div>
+          </div>
+
+          <!-- IMPACT -->
+          <div id="impact-preview"
+            style="padding:12px 16px;margin-bottom:22px;background:rgba(192,144,48,.06);border-left:2px solid #C09030">
+            <span style="color:#C09030;font-weight:600;font-family:'Cormorant Garamond',serif;font-size:17px">$50
+            </span><span style="font-size:14px;color:rgba(245,234,224,.5);font-weight:300">= ustensiles + 100 repas
+              chauds</span>
+          </div>
+
+          <!-- MODE PAIEMENT -->
+          <div style="margin-bottom:22px">
+            <div
+              style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.32);text-transform:uppercase;letter-spacing:.2em;margin-bottom:12px">
+              Mode de paiement</div>
+            <div style="display:flex;gap:8px">
+              <button class="pay-method active" onclick="selPay('mobile',this)">
+                <div style="font-size:20px;margin-bottom:4px">📱</div>
+                <div style="font-size:10px;color:#F5EAE0;font-weight:500;font-family:'DM Sans',sans-serif">Mobile Money
+                </div>
+                <div
+                  style="font-size:8px;color:rgba(245,234,224,.38);margin-top:2px;font-family:'Space Mono',monospace">
+                  Airtel · Mpesa</div>
+              </button>
+              <button class="pay-method" onclick="selPay('cash',this)">
+                <div style="font-size:20px;margin-bottom:4px">💵</div>
+                <div style="font-size:10px;color:#F5EAE0;font-weight:500;font-family:'DM Sans',sans-serif">Espèces</div>
+                <div
+                  style="font-size:8px;color:rgba(245,234,224,.38);margin-top:2px;font-family:'Space Mono',monospace">
+                  Cash sur place</div>
+              </button>
+              <button class="pay-method" onclick="selPay('card',this)">
+                <div style="font-size:20px;margin-bottom:4px">💳</div>
+                <div style="font-size:10px;color:#F5EAE0;font-weight:500;font-family:'DM Sans',sans-serif">Carte</div>
+                <div
+                  style="font-size:8px;color:rgba(245,234,224,.38);margin-top:2px;font-family:'Space Mono',monospace">
+                  Internationale</div>
+              </button>
+            </div>
+
+            <!-- Mobile Money -->
+            <div id="pay-mobile" class="pay-detail">
+              <div
+                style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px">
+                Envoyez votre don au :</div>
+              <div class="pay-info-row">
+                <div style="font-size:18px;flex-shrink:0">📱</div>
+                <div style="flex:1">
+                  <div
+                    style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em">
+                    Airtel Money</div>
+                  <div id="airtel-num"
+                    style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#F5EAE0;margin-top:2px">
+                    +243 988 742 356</div>
+                </div><button class="copy-btn"
+                  onclick="doCopy(document.getElementById('airtel-num').textContent,this)">Copier</button>
+              </div>
+              <div class="pay-info-row">
+                <div style="font-size:18px;flex-shrink:0">📲</div>
+                <div style="flex:1">
+                  <div
+                    style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em">
+                    M-Pesa</div>
+                  <div id="mpesa-num"
+                    style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#F5EAE0;margin-top:2px">
+                    +243 830 570 111</div>
+                </div><button class="copy-btn"
+                  onclick="doCopy(document.getElementById('mpesa-num').textContent,this)">Copier</button>
+              </div>
+              <div
+                style="margin-top:12px;padding:10px 12px;background:rgba(192,144,48,.05);border-left:2px solid rgba(192,144,48,.3)">
+                <div
+                  style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">
+                  Référence obligatoire</div>
+                <div style="font-family:'Space Mono',monospace;font-size:13px;color:#C09030;letter-spacing:.1em">
+                  BOC-GALA-2026</div>
+              </div>
+              <div style="margin-top:10px;font-size:12px;color:rgba(245,234,224,.32);font-style:italic">📸 Envoyez la
+                confirmation à <span style="color:#C09030">breadofcharity1@gmail.com</span></div>
+            </div>
+
+            <!-- Espèces -->
+            <div id="pay-cash" class="pay-detail" style="display:none">
+              <div style="text-align:center;padding:8px 0">
+                <div style="font-size:36px;margin-bottom:12px">💵</div>
+                <div
+                  style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#F5EAE0;margin-bottom:10px">
+                  Don en espèces</div>
+                <div style="font-size:14px;color:rgba(245,234,224,.5);line-height:1.75;margin-bottom:14px">Remettez
+                  votre don en espèces directement à notre équipe sur place lors de la soirée gala.</div>
+                <div
+                  style="background:rgba(192,144,48,.07);border:1px solid rgba(192,144,48,.2);padding:14px 16px;text-align:left">
+                  <div
+                    style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px">
+                    Point de collecte</div>
+                  <div style="font-size:14px;color:#F5EAE0;line-height:1.6">📍 Table d'accueil — Hôtel Fleuve
+                    Congo<br>🕖 Disponible dès 18h30<br>📧 breadofcharity1@gmail.com</div>
+                </div>
+                <div
+                  style="margin-top:12px;font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.3);letter-spacing:.06em">
+                  Un reçu vous sera remis sur place</div>
+              </div>
+            </div>
+
+            <!-- Carte -->
+            <div id="pay-card" class="pay-detail" style="display:none;text-align:center;padding:24px">
+              <div style="font-size:36px;margin-bottom:12px">💳</div>
+              <div
+                style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#F5EAE0;margin-bottom:8px">
+                Paiement en ligne sécurisé</div>
+              <div style="font-size:13px;color:rgba(245,234,224,.45);line-height:1.7;margin-bottom:16px">Notre
+                plateforme CinetPay est en cours d'activation.<br>Disponible très prochainement.</div>
+              <div style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;letter-spacing:.1em">En
+                attendant → Mobile Money ou Espèces</div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <button id="donate-btn" onclick="handleDonate()"
+            style="width:100%;padding:18px;border:none;background:linear-gradient(135deg,#9A7320,#C09030);color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:.1em;text-transform:uppercase;transition:all .45s;position:relative;overflow:hidden">
+            <span id="btn-text">Confirmer mon don de $50</span>
+            <div style="position:absolute;top:0;left:0;right:0;height:1px;background:rgba(255,255,255,.25)"></div>
+          </button>
+          <div
+            style="text-align:center;margin-top:14px;font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.18);letter-spacing:.06em">
+            🔒 Sécurisé · breadofcharity1@gmail.com</div>
         </div>
       </div>
+    </section>
 
-      <!-- CTA -->
-      <button id="donate-btn" onclick="handleDonate()" style="width:100%;padding:18px;border:none;background:linear-gradient(135deg,#9A7320,#C09030);color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:.1em;text-transform:uppercase;transition:all .45s;position:relative;overflow:hidden">
-        <span id="btn-text">Confirmer mon don de $50</span>
-        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:rgba(255,255,255,.25)"></div>
-      </button>
-      <div style="text-align:center;margin-top:14px;font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.18);letter-spacing:.06em">🔒 Sécurisé · breadofcharity1@gmail.com</div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer style="padding:48px clamp(16px,6vw,60px) 32px;border-top:1px solid rgba(192,144,48,.08)">
-  <div style="max-width:960px;margin:0 auto">
-    <div class="ornament"><div class="orn-line"></div><div class="orn-diamond"></div><div class="orn-line rev"></div></div>
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;margin-bottom:32px">
-      <img id="footer-logo" alt="Bread of Charity" style="height:48px;mix-blend-mode:screen"/>
-      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
-        <a href="mailto:breadofcharity1@gmail.com" style="font-family:'DM Sans',sans-serif;font-size:14px;color:#C09030;text-decoration:none">breadofcharity1@gmail.com</a>
-        <a href="https://instagram.com/bread_of_charity" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.32);text-decoration:none;letter-spacing:.06em">@bread_of_charity</a>
+    <!-- FOOTER -->
+    <footer style="padding:48px clamp(16px,6vw,60px) 32px;border-top:1px solid rgba(192,144,48,.08)">
+      <div style="max-width:960px;margin:0 auto">
+        <div class="ornament">
+          <div class="orn-line"></div>
+          <div class="orn-diamond"></div>
+          <div class="orn-line rev"></div>
+        </div>
+        <div
+          style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;margin-bottom:32px">
+          <img id="footer-logo" alt="Bread of Charity" style="height:48px;mix-blend-mode:screen" />
+          <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+            <a href="mailto:breadofcharity1@gmail.com"
+              style="font-family:'DM Sans',sans-serif;font-size:14px;color:#C09030;text-decoration:none">breadofcharity1@gmail.com</a>
+            <a href="https://instagram.com/bread_of_charity" target="_blank" rel="noopener"
+              style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,234,224,.32);text-decoration:none;letter-spacing:.06em">@bread_of_charity</a>
+          </div>
+        </div>
+        <div style="height:1px;background:rgba(192,144,48,.07);margin-bottom:20px"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+          <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(245,234,224,.18)">© 2026 Bread of
+            Charity · Organisation à but non lucratif</div>
+          <a href="admin.html"
+            style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.08);text-decoration:none;letter-spacing:.06em">⚙
+            admin</a>
+        </div>
       </div>
-    </div>
-    <div style="height:1px;background:rgba(192,144,48,.07);margin-bottom:20px"></div>
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
-      <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(245,234,224,.18)">© 2026 Bread of Charity · Organisation à but non lucratif</div>
-      <a href="admin.html" style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.08);text-decoration:none;letter-spacing:.06em">⚙ admin</a>
-    </div>
-  </div>
-</footer>
+    </footer>
 
-</div><!-- /main-site -->
+  </div><!-- /main-site -->
 
-<script>
-// ══ INIT LOGOS ══
-document.querySelectorAll('#pre-logo,#nav-logo,#hero-logo,#gala-logo,#footer-logo').forEach(el=>el.src=CONFIG.LOGO_URL);
-document.getElementById('airtel-num').textContent = CONFIG.AIRTEL_NUM;
-document.getElementById('mpesa-num').textContent  = CONFIG.MPESA_NUM;
-document.getElementById('goal-usd').textContent   = '$'+CONFIG.GOAL_USD.toLocaleString('fr-FR');
-document.getElementById('goal-cdf').textContent   = 'FC '+Math.round(CONFIG.GOAL_USD*CONFIG.CDF_RATE/1000000)+'M';
+  <script>
+    // ══ INIT LOGOS ══
+    document.querySelectorAll('#pre-logo,#nav-logo,#hero-logo,#gala-logo,#footer-logo').forEach(el => el.src = CONFIG.LOGO_URL);
+    document.getElementById('airtel-num').textContent = CONFIG.AIRTEL_NUM;
+    document.getElementById('mpesa-num').textContent = CONFIG.MPESA_NUM;
+    document.getElementById('goal-usd').textContent = '$' + CONFIG.GOAL_USD.toLocaleString('fr-FR');
+    document.getElementById('goal-cdf').textContent = 'FC ' + Math.round(CONFIG.GOAL_USD * CONFIG.CDF_RATE / 1000000) + 'M';
 
-// ══ PRELOADER ══
-setTimeout(()=>{
-  const pre=document.getElementById('preloader');
-  const main=document.getElementById('main-site');
-  pre.classList.add('exit');
-  main.style.opacity='1';
-  setTimeout(()=>pre.remove(),1000);
-},3500);
+    // ══ PRELOADER ══
+    setTimeout(() => {
+      const pre = document.getElementById('preloader');
+      const main = document.getElementById('main-site');
+      pre.classList.add('exit');
+      main.style.opacity = '1';
+      setTimeout(() => pre.remove(), 1000);
+    }, 3500);
 
-// ══ PARTICLES ══
-const pc=document.getElementById('particles');
-for(let i=0;i<20;i++){
-  const p=document.createElement('div');p.className='particle';
-  const size=1.5+Math.random()*2.5;
-  p.style.cssText=`left:${5+Math.random()*90}%;--dur:${7+Math.random()*10}s;--delay:${Math.random()*9}s;--dx:${(Math.random()-.5)*80}px;animation-delay:${Math.random()*9}s;width:${size}px;height:${size}px;opacity:${.3+Math.random()*.4}`;
-  pc.appendChild(p);
-}
+    // ══ PARTICLES ══
+    const pc = document.getElementById('particles');
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div'); p.className = 'particle';
+      const size = 1.5 + Math.random() * 2.5;
+      p.style.cssText = `left:${5 + Math.random() * 90}%;--dur:${7 + Math.random() * 10}s;--delay:${Math.random() * 9}s;--dx:${(Math.random() - .5) * 80}px;animation-delay:${Math.random() * 9}s;width:${size}px;height:${size}px;opacity:${.3 + Math.random() * .4}`;
+      pc.appendChild(p);
+    }
 
-// ══ VIDEO ══
-const vid=document.getElementById('hero-video');
-const fb=document.getElementById('fallback');
-vid.addEventListener('canplay',()=>{vid.style.opacity='.35';fb.style.opacity='0';},{once:true});
-vid.load();
+    // ══ VIDEO ══
+    const vid = document.getElementById('hero-video');
+    const fb = document.getElementById('fallback');
+    vid.addEventListener('canplay', () => { vid.style.opacity = '.35'; fb.style.opacity = '0'; }, { once: true });
+    vid.load();
 
-// ══ NAV SCROLL ══
-window.addEventListener('scroll',()=>{
-  const n=document.getElementById('nav');
-  if(window.scrollY>60){n.style.background='rgba(6,10,18,.94)';n.style.backdropFilter='blur(24px)';n.style.borderBottom='1px solid rgba(192,144,48,.1)'}
-  else{n.style.background='transparent';n.style.backdropFilter='none';n.style.borderBottom='none'}
-},{passive:true});
+    // ══ NAV SCROLL ══
+    window.addEventListener('scroll', () => {
+      const n = document.getElementById('nav');
+      if (window.scrollY > 60) { n.style.background = 'rgba(6,10,18,.94)'; n.style.backdropFilter = 'blur(24px)'; n.style.borderBottom = '1px solid rgba(192,144,48,.1)' }
+      else { n.style.background = 'transparent'; n.style.backdropFilter = 'none'; n.style.borderBottom = 'none' }
+    }, { passive: true });
 
-function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
+    function go(id) { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }) }
 
-// ══ FORMATTING ══
-function fmtUSD(n){return '$'+Math.round(n).toLocaleString('fr-FR')}
-function fmtCDF(n){
-  const m=n/1000000;
-  if(m>=1)return'FC '+m.toFixed(1).replace('.',',')+'M';
-  return'FC '+Math.round(n).toLocaleString('fr-FR');
-}
-function pad(n){return String(Math.max(0,n||0)).padStart(2,'0')}
+    // ══ FORMATTING ══
+    function fmtUSD(n) { return '$' + Math.round(n).toLocaleString('fr-FR') }
+    function fmtCDF(n) {
+      const m = n / 1000000;
+      if (m >= 1) return 'FC ' + m.toFixed(1).replace('.', ',') + 'M';
+      return 'FC ' + Math.round(n).toLocaleString('fr-FR');
+    }
+    function pad(n) { return String(Math.max(0, n || 0)).padStart(2, '0') }
 
-// ══ STATE ══
-// Read manual donations from localStorage (added via admin.html)
-function getManualTotal(){
-  try{return parseInt(localStorage.getItem('boc_manual_total')||'0')||0}catch{return 0}
-}
-function getManualDonors(){
-  try{return parseInt(localStorage.getItem('boc_manual_donors')||'0')||0}catch{return 0}
-}
+    // ══ STATE ══
+    // Read manual donations from localStorage (added via admin.html)
+    function getManualTotal() {
+      try { return parseInt(localStorage.getItem('boc_manual_total') || '0') || 0 } catch { return 0 }
+    }
+    function getManualDonors() {
+      try { return parseInt(localStorage.getItem('boc_manual_donors') || '0') || 0 } catch { return 0 }
+    }
 
-let total   = CONFIG.BASE_TOTAL + getManualTotal();
-let donors  = CONFIG.BASE_DONORS + getManualDonors();
-let selAmount = 50;
+    let total = CONFIG.BASE_TOTAL + getManualTotal();
+    let donors = CONFIG.BASE_DONORS + getManualDonors();
+    let selAmount = 50;
 
-const GOAL   = CONFIG.GOAL_USD;
-const RATE   = CONFIG.CDF_RATE;
-const GALA   = new Date("2026-05-31T16:00:00Z");
+    const GOAL = CONFIG.GOAL_USD;
+    const RATE = CONFIG.CDF_RATE;
+    const GALA = new Date("2026-05-31T16:00:00Z");
 
-// Aucune donnée fictive — seuls les vrais dons apparaissent
-const IMPACTS={10:"8 repas chauds pour des enfants de la rue",25:"4 jours de repas pour 5 enfants",50:"environ 40 repas chauds pour des enfants",100:"80 repas — 2 mois et demi pour 1 enfant",200:"160 repas — 5 mois de déjeuners pour 1 enfant",500:"400 repas — plus d'un an de repas pour 1 enfant",1000:"800 repas chauds — contribution à la cantine"};
+    // Aucune donnée fictive — seuls les vrais dons apparaissent
+    const IMPACTS = { 10: "8 repas chauds pour des enfants de la rue", 25: "4 jours de repas pour 5 enfants", 50: "environ 40 repas chauds pour des enfants", 100: "80 repas — 2 mois et demi pour 1 enfant", 200: "160 repas — 5 mois de déjeuners pour 1 enfant", 500: "400 repas — plus d'un an de repas pour 1 enfant", 1000: "800 repas chauds — contribution à la cantine" };
 
-// ══ COUNTDOWN ══
-function updateCD(){
-  const diff=Math.max(0,GALA-Date.now());
-  const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-  const cu=(id,v,l)=>{const el=document.getElementById(id);if(!el)return;el.innerHTML=`<div style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,6vw,48px);font-weight:700;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;font-variant-numeric:tabular-nums">${pad(v)}</div><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.32);text-transform:uppercase;letter-spacing:.16em;margin-top:6px">${l}</div>`};
-  cu('cd-days',d,'Jours');cu('cd-hours',h,'Heures');cu('cd-min',m,'Min');cu('cd-sec',s,'Sec');
-  ['g-days','g-hours','g-min','g-sec'].forEach((id,i)=>{const el=document.getElementById(id);if(el)el.textContent=pad([d,h,m,s][i])});
-  const dl=document.getElementById('days-left');if(dl)dl.textContent=d+'j';
-}
-updateCD();setInterval(updateCD,1000);
+    // ══ COUNTDOWN ══
+    function updateCD() {
+      const diff = Math.max(0, GALA - Date.now());
+      const d = Math.floor(diff / 86400000), h = Math.floor((diff % 86400000) / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
+      const cu = (id, v, l) => { const el = document.getElementById(id); if (!el) return; el.innerHTML = `<div style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,6vw,48px);font-weight:700;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;font-variant-numeric:tabular-nums">${pad(v)}</div><div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,234,224,.32);text-transform:uppercase;letter-spacing:.16em;margin-top:6px">${l}</div>` };
+      cu('cd-days', d, 'Jours'); cu('cd-hours', h, 'Heures'); cu('cd-min', m, 'Min'); cu('cd-sec', s, 'Sec');
+      ['g-days', 'g-hours', 'g-min', 'g-sec'].forEach((id, i) => { const el = document.getElementById(id); if (el) el.textContent = pad([d, h, m, s][i]) });
+      const dl = document.getElementById('days-left'); if (dl) dl.textContent = d + 'j';
+    }
+    updateCD(); setInterval(updateCD, 1000);
 
-// ══ COUNTER UPDATE (USD + CDF) ══
-function updateCtr(){
-  const pct=Math.min((total/GOAL)*100,100);
-  const totalCDF=total*RATE;
-  const goalCDF=GOAL*RATE;
+    // ══ COUNTER UPDATE (USD + CDF) ══
+    function updateCtr() {
+      const pct = Math.min((total / GOAL) * 100, 100);
+      const totalCDF = total * RATE;
+      const goalCDF = GOAL * RATE;
 
-  document.getElementById('total-usd').textContent=fmtUSD(total);
-  document.getElementById('total-cdf').textContent=fmtCDF(totalCDF);
-  document.getElementById('bar-usd').style.width=pct+'%';
-  document.getElementById('bar-glow-usd').style.width=pct+'%';
-  document.getElementById('bar-cdf').style.width=pct+'%';
-  document.getElementById('pct-usd').textContent=pct.toFixed(2)+'%';
-  document.getElementById('remaining-display').textContent=fmtCDF(Math.max(0,goalCDF-totalCDF))+' restants';
-  document.getElementById('donors-display').textContent=donors.toLocaleString('fr-FR');
-  document.getElementById('avg-display').textContent=fmtUSD(Math.round(total/Math.max(donors,1)));
-}
-updateCtr();
-
-// ══ BroadcastChannel — sync INSTANTANÉE entre onglets (même appareil) ══
-const bcReceive = new BroadcastChannel('boc_gala_2026');
-bcReceive.onmessage = (event) => {
-  const { type, name, amount, newTotal, newDonors } = event.data;
-  if (type === 'new_donation') {
-    total   = newTotal;
-    donors  = newDonors;
+      document.getElementById('total-usd').textContent = fmtUSD(total);
+      document.getElementById('total-cdf').textContent = fmtCDF(totalCDF);
+      document.getElementById('bar-usd').style.width = pct + '%';
+      document.getElementById('bar-glow-usd').style.width = pct + '%';
+      document.getElementById('bar-cdf').style.width = pct + '%';
+      document.getElementById('pct-usd').textContent = pct.toFixed(2) + '%';
+      document.getElementById('remaining-display').textContent = fmtCDF(Math.max(0, goalCDF - totalCDF)) + ' restants';
+      document.getElementById('donors-display').textContent = donors.toLocaleString('fr-FR');
+      document.getElementById('avg-display').textContent = fmtUSD(Math.round(total / Math.max(donors, 1)));
+    }
     updateCtr();
-    showToast(name, amount);
-    addToTicker(name, amount);
-  }
-};
 
-// Fallback: storage event pour compatibilité
-window.addEventListener('storage', e=>{
-  if(e.key==='boc_manual_total'||e.key==='boc_manual_donors'){
-    total  = CONFIG.BASE_TOTAL + getManualTotal();
-    donors = CONFIG.BASE_DONORS + getManualDonors();
-    updateCtr();
-  }
-});
+    // ══ BroadcastChannel — sync INSTANTANÉE entre onglets (même appareil) ══
+    const bcReceive = new BroadcastChannel('boc_gala_2026');
+    bcReceive.onmessage = (event) => {
+      const { type, name, amount, newTotal, newDonors } = event.data;
+      if (type === 'new_donation') {
+        total = newTotal;
+        donors = newDonors;
+        updateCtr();
+        showToast(name, amount);
+        addToTicker(name, amount);
+      }
+    };
 
-// ══ TOAST ══
-function showToast(name,amount){
-  const c=document.getElementById('toasts');
-  const el=document.createElement('div');
-  el.style.cssText='display:flex;align-items:center;gap:12px;padding:11px 18px;background:rgba(6,10,18,.97);border:1px solid rgba(192,144,48,.3);border-top:2px solid #C09030;backdrop-filter:blur(24px);box-shadow:0 10px 40px rgba(0,0,0,.8);transform:translateX(60px) scale(.95);opacity:0;transition:all .4s cubic-bezier(.34,1.4,.64,1);max-width:260px;pointer-events:auto';
-  el.innerHTML=`<span style="position:relative;width:8px;height:8px;flex-shrink:0"><span style="position:absolute;inset:0;border-radius:50%;background:#C09030;animation:ping 1.5s ease-out"></span><span style="width:8px;height:8px;border-radius:50%;background:#C09030;display:block;position:relative"></span></span><div><div style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.14em">Don reçu</div><div style="font-size:13px;color:#F5EAE0;font-weight:500;font-family:'DM Sans',sans-serif;margin-top:2px">${name} · <strong style="color:#D4A843">${fmtUSD(amount)}</strong></div></div>`;
-  c.appendChild(el);
-  setTimeout(()=>{el.style.transform='translateX(0) scale(1)';el.style.opacity='1'},30);
-  setTimeout(()=>{el.style.transform='translateX(60px) scale(.95)';el.style.opacity='0'},4800);
-  setTimeout(()=>el.remove(),5300);
-}
+    // Fallback: storage event pour compatibilité
+    window.addEventListener('storage', e => {
+      if (e.key === 'boc_manual_total' || e.key === 'boc_manual_donors') {
+        total = CONFIG.BASE_TOTAL + getManualTotal();
+        donors = CONFIG.BASE_DONORS + getManualDonors();
+        updateCtr();
+      }
+    });
 
-function addToTicker(name,amount){
-  const t=document.getElementById('ticker');
-  const s=document.createElement('span');s.className='ticker-item';
-  s.innerHTML=`<span class="ticker-dot"></span>${name} — ${fmtUSD(amount)}`;
-  t.appendChild(s.cloneNode(true));t.appendChild(s);
-}
+    // ══ TOAST ══
+    function showToast(name, amount) {
+      const c = document.getElementById('toasts');
+      const el = document.createElement('div');
+      el.style.cssText = 'display:flex;align-items:center;gap:12px;padding:11px 18px;background:rgba(6,10,18,.97);border:1px solid rgba(192,144,48,.3);border-top:2px solid #C09030;backdrop-filter:blur(24px);box-shadow:0 10px 40px rgba(0,0,0,.8);transform:translateX(60px) scale(.95);opacity:0;transition:all .4s cubic-bezier(.34,1.4,.64,1);max-width:260px;pointer-events:auto';
+      el.innerHTML = `<span style="position:relative;width:8px;height:8px;flex-shrink:0"><span style="position:absolute;inset:0;border-radius:50%;background:#C09030;animation:ping 1.5s ease-out"></span><span style="width:8px;height:8px;border-radius:50%;background:#C09030;display:block;position:relative"></span></span><div><div style="font-family:'Space Mono',monospace;font-size:8px;color:#C09030;text-transform:uppercase;letter-spacing:.14em">Don reçu</div><div style="font-size:13px;color:#F5EAE0;font-weight:500;font-family:'DM Sans',sans-serif;margin-top:2px">${name} · <strong style="color:#D4A843">${fmtUSD(amount)}</strong></div></div>`;
+      c.appendChild(el);
+      setTimeout(() => { el.style.transform = 'translateX(0) scale(1)'; el.style.opacity = '1' }, 30);
+      setTimeout(() => { el.style.transform = 'translateX(60px) scale(.95)'; el.style.opacity = '0' }, 4800);
+      setTimeout(() => el.remove(), 5300);
+    }
 
-// Pas de simulation — les dons viennent uniquement de l'admin
+    function addToTicker(name, amount) {
+      const t = document.getElementById('ticker');
+      const s = document.createElement('span'); s.className = 'ticker-item';
+      s.innerHTML = `<span class="ticker-dot"></span>${name} — ${fmtUSD(amount)}`;
+      t.appendChild(s.cloneNode(true)); t.appendChild(s);
+    }
 
-// ══ AMOUNTS ══
-function selAmt(a,btn){
-  selAmount=a;document.getElementById('custom-amount').value='';
-  document.querySelectorAll('.amount-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  updateImpact(a);
-  document.getElementById('btn-text').textContent=`Confirmer mon don de ${fmtUSD(a)}`;
-  document.getElementById('cdf-preview').textContent=`≈ FC ${Math.round(a*RATE).toLocaleString('fr-FR')} (Francs Congolais)`;
-}
-function clearPresets(){document.querySelectorAll('.amount-btn').forEach(b=>b.classList.remove('active'))}
-function customAmt(val){
-  const a=parseFloat(val);
-  if(!isNaN(a)&&a>0){
-    selAmount=a;updateImpact(a);
-    document.getElementById('btn-text').textContent=`Confirmer mon don de ${fmtUSD(a)}`;
-    document.getElementById('cdf-preview').textContent=`≈ FC ${Math.round(a*RATE).toLocaleString('fr-FR')} (Francs Congolais)`;
-  }
-}
-function updateImpact(a){
-  const imp=IMPACTS[a]||`don généreux pour les enfants de la rue`;
-  document.getElementById('impact-preview').innerHTML=`<span style="color:#C09030;font-weight:600;font-family:'Cormorant Garamond',serif;font-size:17px">${fmtUSD(a)} </span><span style="font-size:14px;color:rgba(245,234,224,.5);font-weight:300">= ${imp}</span>`;
-}
+    // Pas de simulation — les dons viennent uniquement de l'admin
 
-// ══ PAYMENT ══
-function selPay(mode,btn){
-  document.querySelectorAll('.pay-method').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
-  document.getElementById('pay-mobile').style.display=mode==='mobile'?'block':'none';
-  document.getElementById('pay-cash').style.display=mode==='cash'?'block':'none';
-  document.getElementById('pay-card').style.display=mode==='card'?'block':'none';
-}
+    // ══ AMOUNTS ══
+    function selAmt(a, btn) {
+      selAmount = a; document.getElementById('custom-amount').value = '';
+      document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateImpact(a);
+      document.getElementById('btn-text').textContent = `Confirmer mon don de ${fmtUSD(a)}`;
+      document.getElementById('cdf-preview').textContent = `≈ FC ${Math.round(a * RATE).toLocaleString('fr-FR')} (Francs Congolais)`;
+    }
+    function clearPresets() { document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active')) }
+    function customAmt(val) {
+      const a = parseFloat(val);
+      if (!isNaN(a) && a > 0) {
+        selAmount = a; updateImpact(a);
+        document.getElementById('btn-text').textContent = `Confirmer mon don de ${fmtUSD(a)}`;
+        document.getElementById('cdf-preview').textContent = `≈ FC ${Math.round(a * RATE).toLocaleString('fr-FR')} (Francs Congolais)`;
+      }
+    }
+    function updateImpact(a) {
+      const imp = IMPACTS[a] || `don généreux pour les enfants de la rue`;
+      document.getElementById('impact-preview').innerHTML = `<span style="color:#C09030;font-weight:600;font-family:'Cormorant Garamond',serif;font-size:17px">${fmtUSD(a)} </span><span style="font-size:14px;color:rgba(245,234,224,.5);font-weight:300">= ${imp}</span>`;
+    }
 
-function copyNum(num,btn){
-  navigator.clipboard?.writeText(num).catch(()=>{});
-  const orig=btn.textContent;btn.textContent='✓ Copié !';
-  btn.style.color='#4ade80';btn.style.borderColor='rgba(74,222,128,.4)';
-  setTimeout(()=>{btn.textContent=orig;btn.style.color='#C09030';btn.style.borderColor='rgba(192,144,48,.3)'},2500);
-}
-function doCopy(text,btn){
-  navigator.clipboard?.writeText(text).catch(()=>{});
-  const orig=btn.textContent;btn.textContent='✓ Copié';setTimeout(()=>btn.textContent=orig,2000);
-}
+    // ══ PAYMENT ══
+    function selPay(mode, btn) {
+      document.querySelectorAll('.pay-method').forEach(b => b.classList.remove('active')); btn.classList.add('active');
+      document.getElementById('pay-mobile').style.display = mode === 'mobile' ? 'block' : 'none';
+      document.getElementById('pay-cash').style.display = mode === 'cash' ? 'block' : 'none';
+      document.getElementById('pay-card').style.display = mode === 'card' ? 'block' : 'none';
+    }
 
-// ══ DONATE ══
-let donating=false,donated=false;
-function handleDonate(){
-  if(donating||donated||!selAmount)return;
-  donating=true;
-  const btn=document.getElementById('donate-btn');
-  document.getElementById('btn-text').textContent='Traitement en cours…';
-  btn.style.background='rgba(192,144,48,.3)';btn.style.cursor='not-allowed';
-  setTimeout(()=>{
-    const name=document.getElementById('donor-name').value.trim()||'Vous';
-    total=Math.min(total+selAmount,GOAL);donors++;
-    updateCtr();showToast(name,selAmount);addToTicker(name,selAmount);
-    donating=false;donated=true;
-    document.getElementById('donate-card').innerHTML=`<div style="text-align:center;padding:36px 0;position:relative"><div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9A7320,#C09030,transparent)"></div><img src="${CONFIG.LOGO_URL}" style="height:60px;mix-blend-mode:screen;margin-bottom:20px;animation:float 3s ease-in-out infinite"/><h3 style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:#F5EAE0;margin-bottom:4px">Merci</h3><h3 style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;font-style:italic;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px">infiniment.</h3><p style="color:rgba(245,234,224,.6);font-size:16px;line-height:1.85;font-family:'Cormorant Garamond',serif">Votre don de <strong style="color:#C09030">${fmtUSD(selAmount)}</strong> va nourrir<br>des enfants de la rue à Kinshasa.</p><p style="margin-top:12px;color:rgba(245,234,224,.38);font-size:14px;font-style:italic">Que Dieu vous bénisse. 🍞🧡</p></div>`;
-  },1500);
-}
-</script>
+    function copyNum(num, btn) {
+      navigator.clipboard?.writeText(num).catch(() => { });
+      const orig = btn.textContent; btn.textContent = '✓ Copié !';
+      btn.style.color = '#4ade80'; btn.style.borderColor = 'rgba(74,222,128,.4)';
+      setTimeout(() => { btn.textContent = orig; btn.style.color = '#C09030'; btn.style.borderColor = 'rgba(192,144,48,.3)' }, 2500);
+    }
+    function doCopy(text, btn) {
+      navigator.clipboard?.writeText(text).catch(() => { });
+      const orig = btn.textContent; btn.textContent = '✓ Copié'; setTimeout(() => btn.textContent = orig, 2000);
+    }
+
+    // ══ DONATE ══
+    let donating = false, donated = false;
+    function handleDonate() {
+      if (donating || donated || !selAmount) return;
+      donating = true;
+      const btn = document.getElementById('donate-btn');
+      document.getElementById('btn-text').textContent = 'Traitement en cours…';
+      btn.style.background = 'rgba(192,144,48,.3)'; btn.style.cursor = 'not-allowed';
+      setTimeout(() => {
+        const name = document.getElementById('donor-name').value.trim() || 'Vous';
+        total = Math.min(total + selAmount, GOAL); donors++;
+        updateCtr(); showToast(name, selAmount); addToTicker(name, selAmount);
+        donating = false; donated = true;
+        document.getElementById('donate-card').innerHTML = `<div style="text-align:center;padding:36px 0;position:relative"><div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9A7320,#C09030,transparent)"></div><img src="${CONFIG.LOGO_URL}" style="height:60px;mix-blend-mode:screen;margin-bottom:20px;animation:float 3s ease-in-out infinite"/><h3 style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:#F5EAE0;margin-bottom:4px">Merci</h3><h3 style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;font-style:italic;background:linear-gradient(135deg,#9A7320,#C09030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px">infiniment.</h3><p style="color:rgba(245,234,224,.6);font-size:16px;line-height:1.85;font-family:'Cormorant Garamond',serif">Votre don de <strong style="color:#C09030">${fmtUSD(selAmount)}</strong> va nourrir<br>des enfants de la rue à Kinshasa.</p><p style="margin-top:12px;color:rgba(245,234,224,.38);font-size:14px;font-style:italic">Que Dieu vous bénisse. 🍞🧡</p></div>`;
+      }, 1500);
+    }
+  </script>
 </body>
+
 </html>
